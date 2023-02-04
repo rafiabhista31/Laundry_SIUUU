@@ -3,8 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
-use App\Models\User;
-use PhpParser\Node\Expr\BinaryOp\LogicalOr;
 
 
 /*
@@ -28,3 +26,7 @@ Route::post('login', [LoginController::class,'proses'])->name('login.proses')->m
 //dashboard
 Route::get('/dashboard/admin',[DashboardController::class,'admin'])->name('dashboard.admin')->middleware('auth', 'level:kasir');
 Route::get('/dashboard/kasir',[DashboardController::class,'kasir'])->name('dashboard.kasir')->middleware('auth', 'level:kasir');
+Route::get('/dashboard/owner',[DashboardController::class,'owner'])->name('dashboard.owner')->middleware('auth');
+
+
+Route::view('403','error.403')->name('error.403');

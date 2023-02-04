@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use PhpParser\Node\Stmt\ElseIf_;
+
 
 class LoginController extends Controller
 {
@@ -21,15 +21,15 @@ class LoginController extends Controller
             'password' => 'required'
         ]);
 
-        if (Auth::attempt($user))
-        {
+        if (Auth::attempt($user)){
             $request->session()->regenerate();
             $user = Auth::user();
+            
             if ($user->level == 'admin') {
                 return redirect()->route('dashboard.admin');
-            } elseif ( $user->level == 'kasir'){
+            } else if ( $user->level == 'kasir'){
                 return redirect()->route('dashboard.kasir');
-            } elseif ($user->level == 'owner'){
+            } else if ($user->level == 'owner'){
                 return redirect()->route('dashboard.owner');
             } else {
                 return redirect()->route('login');
