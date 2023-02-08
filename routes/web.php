@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,15 +34,20 @@ Route::get('register',[RegisterController::class,'view'])->name('register')->mid
 Route::post('register', [RegisterController::class,'store'])->name('register.store')->middleware('guest');
 
 
-//home
-Route::group(['middleware' => ['auth']], function() {
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
-});
+// //home
+// Route::group(['middleware' => ['auth']], function() {
+//     Route::get('/home', [HomeController::class, 'index'])->name('home');
+// });
 
 //dashboard
-Route::get('/dashboard/admin',[DashboardController::class,'admin'])->name('dashboard.admin')->middleware('auth', 'level:admin');
-Route::get('/dashboard/kasir',[DashboardController::class,'kasir'])->name('dashboard.kasir')->middleware('auth', 'level:kasir');
-Route::get('/dashboard/owner',[DashboardController::class,'owner'])->name('dashboard.owner')->middleware('auth');
+Route::get('/dashboard/admin',[DashboardController::class,'admin'])->name('dashboard.admin')
+->middleware('auth', 'level:admin');
+Route::get('/dashboard/kasir',[DashboardController::class,'kasir'])
+->name('dashboard.kasir')->middleware('auth', 'level:kasir');
+Route::get('/dashboard/owner',[DashboardController::class,'owner'])->name('dashboard.owner')
+->middleware('auth');
 
 
 Route::view('403','error.403')->name('error.403');
+
+

@@ -25,19 +25,19 @@ class LoginController extends Controller
             $request->session()->regenerate();
             $user = Auth::user();
             
-            if ($user->level == 'admin') {
+            if ($user->role == 'admin') {
                 return redirect()->route('dashboard.admin');
-            } else if ( $user->level == 'kasir'){
+            } else if ( $user->role == 'kasir'){
                 return redirect()->route('dashboard.kasir');
-            } else if ($user->level == 'owner'){
+            } else if ($user->role == 'owner'){
                 return redirect()->route('dashboard.owner');
             } else {
                 return redirect()->route('login');
             }
 
-        return back()->withErrors([
-            'username' => 'The provided credentials do not match our records.',
-        ])->onlyInput('username');
+             return back()->withErrors([
+            'username' => 'The provided credentials do not match our records.',])
+            ->onlyInput('username');
 
     }
     

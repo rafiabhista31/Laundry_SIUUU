@@ -39,7 +39,7 @@ class UserSeeder extends Seeder
                 'outlet_id' => '3'
         ]
         ];
-        foreach ($users as $key=> $value){
+        foreach ($users as $key => $value){
             User::create($value);
         }
     }
