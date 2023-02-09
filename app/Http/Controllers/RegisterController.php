@@ -19,7 +19,7 @@ class RegisterController extends Controller
     public function store(Request $request) 
     {
         $data = request()->validate([
-            'nama' => 'required|min:3|max:25',
+            'nama' => 'required',
             'username' => 'required|unique:users,username',
             'password' => 'required',
             'outlet_id' => 'required',
@@ -28,10 +28,11 @@ class RegisterController extends Controller
         
         ); 
         User::create([
-            'name' => Str::camel($data['nama']),
+            'nama' => Str::camel($data['nama']),
             'username' => Str::lower($data['username']),
             'password' => bcrypt($data['password']),
             'role' => 'owner',
+            'outlet_id' => Str::lower($data['outlet_id']),
             
         ]);
         return redirect('/login');

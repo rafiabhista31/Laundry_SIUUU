@@ -1,5 +1,11 @@
 @extends('master')
 
 @section('content')
-<h6>Admin</h6>
+<style type="text/css">
+    .pertama {
+    color: white;
+    }
+    </style>
+<h6 class="pertama">Admin</h6>
+
 @endsection

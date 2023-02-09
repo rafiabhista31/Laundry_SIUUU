@@ -1,3 +1,6 @@
+@extends('master')
+
+@section('content')
 <style type="text/css">
    .pertama {
    color: green;
@@ -7,3 +10,4 @@
 <strong>
     <h1 class="pertama"> kasir COUYYYY</h1>
 </strong>
+@endsection

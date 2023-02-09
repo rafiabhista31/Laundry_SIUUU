@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\OutletController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -47,7 +49,6 @@ Route::get('/dashboard/kasir',[DashboardController::class,'kasir'])
 Route::get('/dashboard/owner',[DashboardController::class,'owner'])->name('dashboard.owner')
 ->middleware('auth');
 
-
 Route::view('403','error.403')->name('error.403');
 
-
+route::resource('outlet', OutletController::class);
