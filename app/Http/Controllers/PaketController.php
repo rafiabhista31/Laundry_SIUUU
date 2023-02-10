@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Outlet;
 use App\Models\Paket;
 use Illuminate\Http\Request;
 
@@ -15,6 +16,9 @@ class PaketController extends Controller
     public function index()
     {
         //
+        $paket = Paket::all();
+        $outlet = Outlet::all();
+        return view('paket.index', compact('paket','outlet'));
     }
 
     /**
@@ -25,6 +29,9 @@ class PaketController extends Controller
     public function create()
     {
         //
+        $paket = Paket::all();
+        $outlet = Outlet::all();
+        return view('paket.create', compact('paket','outlet'));
     }
 
     /**
@@ -36,6 +43,19 @@ class PaketController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'outlet_id' => 'required',
+            'jenis'  => 'required',
+            'nama_paket' => 'required',
+            'harga' => 'required',
+        ]);
+        Paket::create([
+            'outlet_id' =>$request->outlet_id,
+            'jenis' => $request->jenis,
+            'nama_paket' => $request->nama_paket,
+            'harga' => $request->harga,
+        ]);
+        return redirect('/paket');
     }
 
     /**
@@ -47,6 +67,8 @@ class PaketController extends Controller
     public function show(Paket $paket)
     {
         //
+        $paket = Paket::find($paket->id);
+        return view('paket.show', compact('paket'));
     }
 
     /**

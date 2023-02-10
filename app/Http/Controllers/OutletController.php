@@ -75,6 +75,8 @@ class OutletController extends Controller
     public function edit(Outlet $outlet)
     {
         //
+        $outlet = Outlet::find($outlet->id);
+        return view('outlet.edit', compact('outlet'));
     }
 
     /**
@@ -87,6 +89,17 @@ class OutletController extends Controller
     public function update(Request $request, Outlet $outlet)
     {
         //
+        $request->validate([
+            'nama'  => 'required',
+            'alamat' => 'required',
+            'tlp' => 'required'
+        ]);
+        $outlet = Outlet::find($outlet->id);
+        $outlet-> nama =  $request->nama;
+        $outlet-> alamat =  $request->alamat;
+        $outlet->tlp  =  $request->tlp;
+        $outlet->update();
+        return redirect('/outlet');
     }
 
     /**
@@ -98,5 +111,8 @@ class OutletController extends Controller
     public function destroy(Outlet $outlet)
     {
         //
+        $outlet = Outlet::find($outlet->id);
+        $outlet->delete();
+        return redirect('/outlet');
     }
 }

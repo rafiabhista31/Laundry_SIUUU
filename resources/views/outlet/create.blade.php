@@ -23,13 +23,4 @@
                     </div>
                     <button type="submit">HANTEM!!</button>
               </form>
-            </div>
-          </div>
-        </div>
-        <!-- content-wrapper ends -->
-      </div>
-      <!-- row ends -->
-    </div>
-    <!-- page-body-wrapper ends -->
-  </div>
 @endsection
