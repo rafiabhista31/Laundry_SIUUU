@@ -13,21 +13,32 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="/paket" method="POST">
+              <form action="/member" method="POST">
                 @csrf
                 <div class="card-body">
                   <div class="form-group">
                     <label class="label" for="inputNIS">Nomer Induk Siswa</label>
-                    <input type="text" name="nis" class="form-control" id="inputNIS" placeholder="Enter Nomer Induk Siswa"value="{{ $outlet->nama }}" disabled > 
+                    <input type="text" name="nama" class="form-control" id="inputNIS" 
+                    placeholder="Enter Nomer Induk Siswa"value="{{ $member->nama }}" disabled > 
                   </div>
                   <div class="form-group">
                     <label class="label" for="inputNama">Nama Siswa</label>
-                    <input type="text" name="nama_paket" class="form-control" id="inputNama" placeholder="Enter Nama Siswa"value="{{ $outlet->alamat }}" disabled >
+                    <input type="text" name="alamat" class="form-control" id="inputNama" 
+                    placeholder="Enter Nama Siswa"value="{{ $member->alamat }}" disabled >
                   </div>
                   <div class="form-group">
-                        <label class="label">Alamat</label>
-                        <input type="text" name="harga" class="form-control" rows="3" placeholder="Alamat Siswa"value="{{ $outlet->tlp }}" disabled >
-                      </div>
+                     <label class="label">Alamat</label>
+                     <input type="text" name="tlp" class="form-control" rows="3"
+                     placeholder="Alamat Siswa"value="{{ $member->tlp }}" disabled >
+                  </div>
+                  <div class="form-group">
+                    <label>Jenis Kelamin</label>
+                    <select class="form-control" name="jenis_kelamin">
+                      <option disabled selected>-- Pilih Salah Satu --</option>
+                      <option value="L" disabled {{ $member->jenis_kelamin == "L" ? "selected" : "" }}>Laki-laki</option>
+                      <option value="P" disabled {{ $member->jenis_kelamin == "L" ? "selected" : "" }}>Perempuan</option>
+                    </select>
+                  </div>
                 <!-- /.card-body -->
 
                 <div class="card-footer">

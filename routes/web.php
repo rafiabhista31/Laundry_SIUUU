@@ -3,11 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MemberController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\OutletController;
 use App\Http\Controllers\PaketController;
-
-
+use App\Http\Controllers\TransaksiController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,6 +21,10 @@ use App\Http\Controllers\PaketController;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/master', function () {
+    return view('master');
 });
 
 //login
@@ -45,5 +49,12 @@ Route::view('403','error.403')->name('error.403');
 
 //outlet
 route::resource('outlet', OutletController::class);
+
 //paket
 route::resource('paket', PaketController::class);
+
+//member
+Route::resource('member', MemberController::class);
+
+//transaksi
+Route::resource('transaksi',TransaksiController::class);
