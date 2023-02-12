@@ -1,30 +1,42 @@
 @extends('master')
 
 @section('content')
-    
-<form action="{{route ('member.update', [$member->id])}}" method="POST">
-    @csrf
-    @method("PUT")
-  <div class="row mb-3">
-  <label for="inputTelepon" class="col-sm-2 col-form-label">NO Telepon</label>
-  <div class="col-sm-10">
-  <input type="text" name="nama" value="{{$member->nama}}">
-  </div>
-  </div>
-  <div class="row mb-3">
-  <label for="inputTelepon" class="col-sm-2 col-form-label">Alamat</label>
-  <div class="col-sm-10">
-  <input type="text" name="alamat" value="{{$member->alamat}}">
-  </div>
-  </div>
-  <div class="row mb-3">
-  <label for="inputAlamat" class="col-sm-2 col-form-label">No Telepon</label>
-  <div class="col-sm-10">
-  <input type="text" name="tlp" value="{{$member->tlp}}">
-  </div>
-  </div>
-  <button type="submit">Update</button>
-  <button type="back">kcaB</button>
-  </form>
-  
+<div class="col-md-12">
+  <div class="card card-primary">
+     <div class="card-header">
+       <h3 class="card-title">Masukan Data Barang</h3>
+     </div>
+     <!-- /.card-header -->
+     <!-- form start -->
+     <form action="{{route ('member.update',[$member->id])}}" method="POST">
+         @csrf
+       <div class="card-body">
+           <div class="form-group">
+               <label for="harga_awal">Nama</label>
+            <input type="text" name="nama" value="{{$member->nama}}" class="form-control" id="harga_awal" placeholder="Nama">
+             </div>
+             <div class="form-group">
+               <label for="harga_awal">Alamat</label>
+               <input type="text" name="alamat" value="={{$member->alamat}}" class="form-control" id="harga_awal" placeholder="Alamat">
+             </div>
+             <div class="form-group">
+                <label for="harga_awal">No Telepon</label>
+                <input type="text" name="tlp" value="{{$member->tlp}}" class="form-control" id="harga_awal" placeholder="No Telepon">
+              </div>
+              <div class="form-group">
+                <label>Jenis Kelamin</label>
+                <select class="form-control" name="jenis_kelamin">
+                  <option disabled selected>-- Pilih Salah Satu --</option>
+                  <option value="L" disabled{{ $member->jenis_kelamin == "L" ? "selected" : "" }}>Laki-laki</option>
+                  <option value="P" disabled {{ $member->jenis_kelamin == "P" ? "selected" : "" }}>Perempuan</option>
+                </select>
+              </div>
+       </div>
+       <!-- /.card-body -->
+       <div class="card-footer">
+         <button type="submit" class="btn btn-primary">Submit</button> 
+       </div>
+     </form>
+   </div>
+ </div>
 @endsection

@@ -64,7 +64,7 @@ class MemberController extends Controller
     public function show(Member $member)
     {
         //
-        $member = Member::all($member->id);
+        $member = Member::find($member->id);
         return view('member.show', compact('member'));
     }
 
@@ -77,7 +77,7 @@ class MemberController extends Controller
     public function edit(Member $member)
     {
         //
-        $member = Member::all( $member->id);
+        $member = Member::find( $member->id);
         return view('member.edit', compact('member'));
     }
 

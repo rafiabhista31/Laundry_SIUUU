@@ -12,4 +12,14 @@ class DetailTransaksi extends Model
     protected $fillable = [
         'id','transaksi_id','paket_id','qty'
     ];
+
+    public function transaksi()
+    {
+        return $this->hasOne('App\Transaksi','transaksi_id');
+    }
+
+    public function paket()
+    {
+        return $this->hasOne('App\Paket','paket_id');
+    }
 }

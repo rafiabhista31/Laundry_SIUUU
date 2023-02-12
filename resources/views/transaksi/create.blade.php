@@ -43,7 +43,7 @@
               </div>
               <div class="form-group">
                 <label for="harga_awal">Diskon</label>
-                <input type="double" name="diskon" class="form-control" id="harga_awal" placeholder="Diskon">
+                <input type="numeric" name="diskon" class="form-control" id="harga_awal" placeholder="Diskon">
               </div>
               <div class="form-group">
                 <label for="harga_awal">Pajak</label>

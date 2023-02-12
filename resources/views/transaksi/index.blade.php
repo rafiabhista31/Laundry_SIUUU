@@ -36,6 +36,7 @@
         <td class="td2">Kode Invoice</td>
         <td class="td3">Member Id</td>
         <td class="td4">Tanggal</td>
+        <td class="td4">Tanggal Bayar</td>
         <td class="td5">Batas Waktu</td>
         <td class="td2">Biaya Tambahan</td>
         <td class="td3">Diskon</td>
@@ -64,8 +65,8 @@
         <td class="th2">{{ $transaksi->user_id }}</td>
         <td class="th4">
         <form action="{{route ('transaksi.destroy', [$transaksi->id])}}" method="POST">
-        <a class="btn btn-info mr-3" href="{{ $transaksi->id }}">DETAIL</a>
-        <a class="btn btn-warning mr-3" href="{{ $transaksi->id}}/edit">EDIT</a>
+        <a class="btn btn-info mr-3" href="transaksi/{{ $transaksi->id }}">DETAIL</a>
+        <a class="btn btn-warning mr-3" href="transaksi/{{ $transaksi->id}}/edit">EDIT</a>
         @csrf
         @method('DELETE')
         <input type="submit" class="btn btn-danger" value="hapus azza">

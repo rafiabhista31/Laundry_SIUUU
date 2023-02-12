@@ -92,7 +92,7 @@ class TransaksiController extends Controller
         $member    = Member::all();
         $outlet    = Outlet::all();
         $user      = User::all();
-        $transaksi = Transaksi::all();
+        $transaksi = Transaksi::find($transaksi->id);
         return view('transaksi.show',compact('transaksi','member','outlet','user'));
     }
 
@@ -108,7 +108,7 @@ class TransaksiController extends Controller
         $member    = Member::all();
         $outlet    = Outlet::all();
         $user      = User::all();
-        $transaksi = Transaksi::all();
+        $transaksi = Transaksi::find($transaksi->id);
         return view('transaksi.edit',compact('transaksi','member','outlet','user'));
     }
 
