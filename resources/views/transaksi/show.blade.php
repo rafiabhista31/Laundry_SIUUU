@@ -1,56 +1,83 @@
 @extends('master')
 
 @section('content')
-<form>
-<div class="container-fluid">
-        <div class="row">
-          <!-- left column -->
-          <div class="col-md-12">
-            <!-- general form elements -->
-            <div class="card card-primary">
-              <div class="card-header">
-                <h3 class="card-title">Add New Student</h3>
-              </div>
-              <!-- /.card-header -->
-              <!-- form start -->
-              <form action="/member" method="POST">
-                @csrf
-                <div class="card-body">
-                  <div class="form-group">
-                    <label class="label" for="inputNIS">Nomer Induk Siswa</label>
-                    <input type="text" name="nama" class="form-control" id="inputNIS" 
-                    placeholder="Enter Nomer Induk Siswa"value="{{ $member->nama }}" disabled > 
-                  </div>
-                  <div class="form-group">
-                    <label class="label" for="inputNama">Nama Siswa</label>
-                    <input type="text" name="alamat" class="form-control" id="inputNama" 
-                    placeholder="Enter Nama Siswa"value="{{ $member->alamat }}" disabled >
-                  </div>
-                  <div class="form-group">
-                     <label class="label">Alamat</label>
-                     <input type="text" name="tlp" class="form-control" rows="3"
-                     placeholder="Alamat Siswa"value="{{ $member->tlp }}" disabled >
-                  </div>
-                  <div class="form-group">
-                    <label>Jenis Kelamin</label>
-                    <select class="form-control" name="jenis_kelamin">
-                      <option disabled selected>-- Pilih Salah Satu --</option>
-                      <option value="L" disabled {{ $member->jenis_kelamin == "L" ? "selected" : "" }}>Laki-laki</option>
-                      <option value="P" disabled {{ $member->jenis_kelamin == "L" ? "selected" : "" }}>Perempuan</option>
-                    </select>
-                  </div>
-                <!-- /.card-body -->
-
-                <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Submit</button> 
-                </div>
-              </form>
-            </div>
-            <!-- /.card -->
-            <!-- /.card -->
-          </div>
-          <!--/.col (right) -->
+<div class="col-md-12">
+  <div class="card card-primary">
+     <div class="card-header">
+       <h3 class="card-title">Masukan Data Barang</h3>
+     </div>
+     <!-- /.card-header -->
+     <!-- form start -->
+     <form action="/transaksi" method="POST">
+         @csrf
+       <div class="card-body">
+        <div class="form-group">
+          <label for="outlet_id">Outlet Id</label>
+          <input type="text" name="outlet_id" class="form-control" id="inputNIS" 
+          placeholder="Enter Nomer Induk Siswa"value="{{ $transaksi->outlet_id }}" disabled > 
         </div>
-        <!-- /.row -->
-      </div><!-- /.container-fluid -->
+             <div class="form-group">
+               <label for="Kode_Invoice">Kode Invoice</label>
+               <input type="text" name="kode_invoice" class="form-control" id="Kode_Invoice" 
+               placeholder="Kode Invoide" value="{{$transaksi->kode_invoice}}" disabled>
+             </div>
+             <div class="form-group">
+              <label for="member_id">Member Id</label>
+              <input type="text" name="member_id" class="form-control" id="inputNIS" 
+              placeholder="Enter Nomer Induk Siswa"value="{{ $transaksi->member_id }}" disabled > 
+            </div>
+              <div class="form-group">
+                <label for="harga_awal">Tanggal</label>
+                <input type="date" name="tgl" class="form-control" id="Tanggal"
+                 placeholder="Tanggal" value="{{$transaksi->tgl}}" disabled>
+              </div>
+              <div class="form-group">
+                <label for="harga_awal">Tanggal Bayar</label>
+                <input type="date" name="tgl_bayar" class="form-control" id="Tgl_Bayar" 
+                placeholder="Tanggal Bayar" value="{{$transaksi->tgl_bayar}}" disabled>
+              </div>
+              <div class="form-group">
+                <label for="harga_awal">Batas Waktu</label>
+                <input type="date" name="batas_waktu" class="form-control" id="Batas_Waktu" 
+                placeholder="Tanggal Bayar" value="{{$transaksi->batas_waktu}}" disabled>
+              </div>
+              <div class="form-group">
+                <label for="harga_awal">Biaya Tambahan</label>
+                <input type="number" name="biaya_tambahan" class="form-control" id="Biaya_Tambahan" 
+                placeholder="Biaya Tambahan" value="{{$transaksi->biaya_tambahan}}" disabled>
+              </div>
+              <div class="form-group">
+                <label for="harga_awal">Diskon</label>
+                <input type="number" name="diskon" class="form-control" id="Diskon" 
+                placeholder="Diskon" value="{{$transaksi->diskon}}" disabled>
+              </div>
+              <div class="form-group">
+                <label for="harga_awal">Pajak</label>
+                <input type="number" name="pajak" class="form-control" id="Pajak"
+                 placeholder="Pajak" value="{{$transaksi->pajak}}" disabled>
+              </div>
+            </select>
+            <div class="form-group">
+              <label for="statsu">Dibayar</label>
+              <input type="text" name="status" class="form-control" id="inputNIS" 
+              placeholder="Enter Nomer Induk Siswa"value="{{ $transaksi->status }}" disabled > 
+            </div>
+            <div class="form-group">
+              <label for="status">Dibayar</label>
+              <input type="text" name="dibayar" class="form-control" id="inputNIS" 
+              placeholder="Enter Nomer Induk Siswa"value="{{ $transaksi->dibayar }}" disabled > 
+            </div>
+            <div class="form-group">
+              <label for="user_id">User Id</label>
+              <input type="text" name="user_id" class="form-control" id="inputNIS" 
+              placeholder="Enter Nomer Induk Siswa"value="{{ $transaksi->user_id }}" disabled > 
+            </div>
+       </div>
+       <!-- /.card-body -->
+       <div class="card-footer">
+         <button type="submit" class="btn btn-primary">Submit</button> 
+       </div>
+     </form>
+   </div>
+ </div>
 @endsection

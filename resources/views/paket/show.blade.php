@@ -17,7 +17,8 @@
                 <div class="card-body">
                   <div class="form-group">
                     <label for="inputNIS">Nomer Induk Siswa</label>
-                    <input type="text" name="outlet_id" class="form-control" id="inputNIS" placeholder="Enter Nomer Induk Siswa"value="{{ $paket->outlet_id }}" disabled > 
+                    <input type="text" name="outlet_id" class="form-control" id="inputNIS" 
+                    placeholder="Enter Nomer Induk Siswa"value="{{ $paket->outlet_id }}" disabled > 
                   </div>
                   <div class="form-group">
                   <label>Jenis</label>
