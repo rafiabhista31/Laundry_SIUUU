@@ -28,7 +28,7 @@
             <option value="selimut">Selimut</option>
             <option value="bed_cover">Bed Cover</option>
             <option value="kaos">Kaos</option>
-            <option value="jenis">Jenis</option>
+            <option value="jenis">Lain</option>
           </select>
           </div>
          <div class="form-group">

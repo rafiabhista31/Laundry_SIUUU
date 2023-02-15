@@ -1,21 +1,6 @@
 @extends('master')
 
 @section('content')
-<style>
-  .th1,.th2,.th3,.th4{
-    color:#fff
-  }
-
-  .td1,.td2,.td3,.td4,.td5{
-    color:#fff
-  }
-
-  .he{
-    color:#fff
-  }
-
-
-</style>
 <!DOCTYPE html>
 <html lang="en">
 <head>

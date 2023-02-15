@@ -8,6 +8,8 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\OutletController;
 use App\Http\Controllers\PaketController;
 use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\DetailTransaksiController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -57,7 +59,10 @@ route::resource('outlet', OutletController::class)->middleware('auth', 'role:adm
 route::resource('paket', PaketController::class)->middleware('auth','role:admin');
 
 //member
-Route::resource('member', MemberController::class)->middleware('auth','role:admin');
+Route::resource('member', MemberController::class)->middleware('auth','role:admin,kasir');
 
 //transaksi
 Route::resource('transaksi',TransaksiController::class)->middleware('auth','role:admin');
+
+//transaksi
+Route::resource('detailtransaksi', DetailTransaksiController::class)->middleware('auth','role:admin');
