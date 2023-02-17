@@ -1,18 +1,9 @@
 @extends('master')
 
 @section('content')
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-<body>
   <h1 class="he">INDECK NICH!!!</h1>
   <a class="btn btn-info mr-3" href="/outlet/create">create</a>
-<div class="table-responsive">
+<div class="table-bordered">
   <table class="table">
     <thead>
       <tr>
@@ -41,7 +32,8 @@
       </tr>
     </tr>
     </tbody>
+
     @endforeach
-</body>
-</html>
+</div>
+
 @endsection

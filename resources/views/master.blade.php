@@ -8,7 +8,7 @@
   <title>Spica Admin</title>
   <!-- base:css -->
   <link rel="stylesheet" href="{{asset('spica/vendors/mdi/css/materialdesignicons.min.css')}}">
-  <link rel="stylesheet" href="{{asset('spica/vendors/css/vendor.bundle.base.css')}}">
+  <link rel="stylesheet" href="{{asset('spicavendors/css/vendor.bundle.base.css')}}">
   <!-- endinject -->
   <!-- plugin css for this page -->
   <!-- End plugin css for this page -->
@@ -24,25 +24,13 @@
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
       <!-- partial:./partials/_navbar.html -->
-     @include('template.partials.navbar')
+      @include('template.partials.navbar')
       <!-- partial -->
       <div class="main-panel">
-        <div class="content-wrapper">
-          <div class="row">
-            <div class="col-12 col-xl-6 grid-margin stretch-card">
-              <div class="row w-100 flex-grow">
-                <div class="col-md-12 grid-margin stretch-card">
-                </div>
-            </div>
-        </div>
-    </div>
-    @yield('content')
-          </div>
-          <!-- row end -->
-        </div>
-    
+        @include('template.partials.content')
         <!-- content-wrapper ends -->
         <!-- partial:./partials/_footer.html -->
+       @include('template.partials.footer')
         <!-- partial -->
       </div>
       <!-- main-panel ends -->

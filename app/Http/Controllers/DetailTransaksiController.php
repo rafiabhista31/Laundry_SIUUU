@@ -46,6 +46,17 @@ class DetailTransaksiController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'transaksi_id'           => 'required',
+            'paket_id'               => 'required',
+            'qty'                    => 'required',
+        ]);
+        DetailTransaksi::create([
+            'transaksi_id'           => $request->transaksi_id,
+            'paket_id'               => $request->paket_id,
+            'qty'                    => $request->qty,
+        ]);
+        return redirect('/detailtransaksi');
     }
 
     /**

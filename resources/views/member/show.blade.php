@@ -35,14 +35,14 @@
                     <label>Jenis Kelamin</label>
                     <select class="form-control" name="jenis_kelamin">
                       <option disabled selected>-- Pilih Salah Satu --</option>
-                      <option value="L" disabled {{ $member->jenis_kelamin == "L" ? "selected" : "" }}>Laki-laki</option>
-                      <option value="P" disabled {{ $member->jenis_kelamin == "L" ? "selected" : "" }}>Perempuan</option>
+                      <option value="L" disabled {{ $member->jenis_kelamin == "L" ? "selected" : "" }} disabled>Laki-laki</option>
+                      <option value="P" disabled {{ $member->jenis_kelamin == "P" ? "selected" : "" }} disabled>Perempuan</option>
                     </select>
                   </div>
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="submit" href="/member" class="btn btn-primary">Submit</button> 
+                  <button onclick="history.back()">Go Back</button>
                 </div>
               </form>
             </div>

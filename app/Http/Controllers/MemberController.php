@@ -92,9 +92,9 @@ class MemberController extends Controller
     {
         //
         $request->validate([
-        'nama'  => 'required',
-        'alamat' => 'required',
-        'tlp' => 'required',
+        'nama'          => 'required',
+        'alamat'        => 'required',
+        'tlp'           => 'required',
         'jenis_kelamin' => 'required',
         ]);
         $member = Member::find($member->id);

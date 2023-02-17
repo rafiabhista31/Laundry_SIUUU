@@ -10,7 +10,7 @@
   <title>Document</title>
 </head>
 <body>
-  <h1 class="he">INDECK NICH!!!</h1>
+  <h1 class="he">Paket Index</h1>
   <a class="btn btn-info mr-3" href="/paket/create">create</a>
 <div class="table-responsive">
   <table class="table">
@@ -47,3 +47,5 @@
 </body>
 </html>
 @endsection
+</table>
+</div>

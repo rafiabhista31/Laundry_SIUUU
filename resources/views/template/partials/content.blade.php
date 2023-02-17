@@ -1,5 +1,6 @@
-<div class="content">
-  <div class="container-fluid">
-          @yield('content')
+<div class="content-wrapper">
+    <div class="row">
+             @yield('content')
+    </div>
+    <!-- row end -->
   </div>
-</div>

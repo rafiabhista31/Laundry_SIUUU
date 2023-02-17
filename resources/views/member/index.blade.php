@@ -1,21 +1,6 @@
 @extends('master')
 
 @section('content')
-<style>
-  .th1,.th2,.th3,.th4{
-    color:#fff
-  }
-
-  .td1,.td2,.td3,.td4,.td5{
-    color:#fff
-  }
-
-  .he{
-    color:#fff
-  }
-
-
-</style>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,8 +11,8 @@
 </head>
 <body>
   <h1 class="he">INDECK NICH!!!</h1>
-  <a class="btn btn-info mr-3" href="/outlet/create">create</a>
-<div class="table-responsive">
+  <a class="btn btn-info mr-3" href="/member/create">create</a>
+<div class="table-bordered">
   <table class="table">
     <thead>
       <tr>
