@@ -1,155 +1,203 @@
-<nav class="navbar col-lg-12 col-12 px-0 py-0 py-lg-4 d-flex flex-row">
-  <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
-    <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
-      <span class="mdi mdi-menu"></span>
-    </button>
-    <div class="navbar-brand-wrapper">
-      <a class="navbar-brand brand-logo" href="index.html"><img src="images/logo.svg" alt="logo"/></a>
-      <a class="navbar-brand brand-logo-mini" href="index.html"><img src="images/logo-mini.svg" alt="logo"/></a>
-    </div>
-    <h4 class="font-weight-bold mb-0 d-none d-md-block mt-1">Welcome back, Brandon Haynes</h4>
-    <ul class="navbar-nav navbar-nav-right">
-      <li class="nav-item">
-        <h4 class="mb-0 font-weight-bold d-none d-xl-block">Mar 12, 2019 - Apr 10, 2019</h4>
-      </li>
-      <li class="nav-item dropdown mr-1">
-        <a class="nav-link count-indicator dropdown-toggle d-flex justify-content-center align-items-center" id="messageDropdown" href="#" data-toggle="dropdown">
-          <i class="mdi mdi-calendar mx-0"></i>
-          <span class="count bg-info">2</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
-          <p class="mb-0 font-weight-normal float-left dropdown-header">Messages</p>
-          <a class="dropdown-item preview-item">
-            <div class="preview-thumbnail">
-                <img src="images/faces/face4.jpg" alt="image" class="profile-pic">
-            </div>
-            <div class="preview-item-content flex-grow">
-              <h6 class="preview-subject ellipsis font-weight-normal">David Grey
-              </h6>
-              <p class="font-weight-light small-text text-muted mb-0">
-                The meeting is cancelled
-              </p>
-            </div>
+<div id="content-wrapper" class="d-flex flex-column">
+  <div id="content">
+    <!-- TopBar -->
+    <nav class="navbar navbar-expand navbar-light bg-navbar topbar mb-4 static-top">
+      <button id="sidebarToggleTop" class="btn btn-link rounded-circle mr-3">
+        <i class="fa fa-bars"></i>
+      </button>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown no-arrow">
+          <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-search fa-fw"></i>
           </a>
-          <a class="dropdown-item preview-item">
-            <div class="preview-thumbnail">
-                <img src="images/faces/face2.jpg" alt="image" class="profile-pic">
-            </div>
-            <div class="preview-item-content flex-grow">
-              <h6 class="preview-subject ellipsis font-weight-normal">Tim Cook
-              </h6>
-              <p class="font-weight-light small-text text-muted mb-0">
-                New product launch
-              </p>
-            </div>
-          </a>
-          <a class="dropdown-item preview-item">
-            <div class="preview-thumbnail">
-                <img src="images/faces/face3.jpg" alt="image" class="profile-pic">
-            </div>
-            <div class="preview-item-content flex-grow">
-              <h6 class="preview-subject ellipsis font-weight-normal"> Johnson
-              </h6>
-              <p class="font-weight-light small-text text-muted mb-0">
-                Upcoming board meeting
-              </p>
-            </div>
-          </a>
-        </div>
-      </li>
-      <li class="nav-item dropdown mr-2">
-        <a class="nav-link count-indicator dropdown-toggle d-flex align-items-center justify-content-center" id="notificationDropdown" href="#" data-toggle="dropdown">
-          <i class="mdi mdi-email-open mx-0"></i>
-          <span class="count bg-danger">1</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
-          <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
-          <a class="dropdown-item preview-item">
-            <div class="preview-thumbnail">
-              <div class="preview-icon bg-success">
-                <i class="mdi mdi-information mx-0"></i>
+          <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+            aria-labelledby="searchDropdown">
+            <form class="navbar-search">
+              <div class="input-group">
+                <input type="text" class="form-control bg-light border-1 small" placeholder="What do you want to look for?"
+                  aria-label="Search" aria-describedby="basic-addon2" style="border-color: #3f51b5;">
+                <div class="input-group-append">
+                  <button class="btn btn-primary" type="button">
+                    <i class="fas fa-search fa-sm"></i>
+                  </button>
+                </div>
               </div>
-            </div>
-            <div class="preview-item-content">
-              <h6 class="preview-subject font-weight-normal">Application Error</h6>
-              <p class="font-weight-light small-text mb-0 text-muted">
-                Just now
-              </p>
-            </div>
+            </form>
+          </div>
+        </li>
+        <li class="nav-item dropdown no-arrow mx-1">
+          <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-bell fa-fw"></i>
+            <span class="badge badge-danger badge-counter">3+</span>
           </a>
-          <a class="dropdown-item preview-item">
-            <div class="preview-thumbnail">
-              <div class="preview-icon bg-warning">
-                <i class="mdi mdi-settings mx-0"></i>
+          <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+            aria-labelledby="alertsDropdown">
+            <h6 class="dropdown-header">
+              Alerts Center
+            </h6>
+            <a class="dropdown-item d-flex align-items-center" href="#">
+              <div class="mr-3">
+                <div class="icon-circle bg-primary">
+                  <i class="fas fa-file-alt text-white"></i>
+                </div>
               </div>
-            </div>
-            <div class="preview-item-content">
-              <h6 class="preview-subject font-weight-normal">Settings</h6>
-              <p class="font-weight-light small-text mb-0 text-muted">
-                Private message
-              </p>
-            </div>
-          </a>
-          <a class="dropdown-item preview-item">
-            <div class="preview-thumbnail">
-              <div class="preview-icon bg-info">
-                <i class="mdi mdi-account-box mx-0"></i>
+              <div>
+                <div class="small text-gray-500">December 12, 2019</div>
+                <span class="font-weight-bold">A new monthly report is ready to download!</span>
               </div>
-            </div>
-            <div class="preview-item-content">
-              <h6 class="preview-subject font-weight-normal">New user registration</h6>
-              <p class="font-weight-light small-text mb-0 text-muted">
-                2 days ago
-              </p>
-            </div>
+            </a>
+            <a class="dropdown-item d-flex align-items-center" href="#">
+              <div class="mr-3">
+                <div class="icon-circle bg-success">
+                  <i class="fas fa-donate text-white"></i>
+                </div>
+              </div>
+              <div>
+                <div class="small text-gray-500">December 7, 2019</div>
+                $290.29 has been deposited into your account!
+              </div>
+            </a>
+            <a class="dropdown-item d-flex align-items-center" href="#">
+              <div class="mr-3">
+                <div class="icon-circle bg-warning">
+                  <i class="fas fa-exclamation-triangle text-white"></i>
+                </div>
+              </div>
+              <div>
+                <div class="small text-gray-500">December 2, 2019</div>
+                Spending Alert: We've noticed unusually high spending for your account.
+              </div>
+            </a>
+            <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown no-arrow mx-1">
+          <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-envelope fa-fw"></i>
+            <span class="badge badge-warning badge-counter">2</span>
           </a>
-        </div>
-      </li>
-    </ul>
-    <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
-      <span class="mdi mdi-menu"></span>
-    </button>
-  </div>
-  <div class="navbar-menu-wrapper navbar-search-wrapper d-none d-lg-flex align-items-center">
-    <ul class="navbar-nav mr-lg-2">
-      <li class="nav-item nav-search d-none d-lg-block">
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Search Here..." aria-label="search" aria-describedby="search">
-        </div>
-      </li>
-    </ul>
-    <ul class="navbar-nav navbar-nav-right">
-      <li class="nav-item nav-profile dropdown">
-        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-          <img src="images/faces/face5.jpg" alt="profile"/>
-          <span class="nav-profile-name">Eleanor Richardson</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-          <a class="dropdown-item">
-            <i class="mdi mdi-settings text-primary"></i>
-            Settings
+          <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+            aria-labelledby="messagesDropdown">
+            <h6 class="dropdown-header">
+              Message Center
+            </h6>
+            <a class="dropdown-item d-flex align-items-center" href="#">
+              <div class="dropdown-list-image mr-3">
+                <img class="rounded-circle" src="img/man.png" style="max-width: 60px" alt="">
+                <div class="status-indicator bg-success"></div>
+              </div>
+              <div class="font-weight-bold">
+                <div class="text-truncate">Hi there! I am wondering if you can help me with a problem I've been
+                  having.</div>
+                <div class="small text-gray-500">Udin Cilok · 58m</div>
+              </div>
+            </a>
+            <a class="dropdown-item d-flex align-items-center" href="#">
+              <div class="dropdown-list-image mr-3">
+                <img class="rounded-circle" src="img/girl.png" style="max-width: 60px" alt="">
+                <div class="status-indicator bg-default"></div>
+              </div>
+              <div>
+                <div class="text-truncate">Am I a good boy? The reason I ask is because someone told me that people
+                  say this to all dogs, even if they aren't good...</div>
+                <div class="small text-gray-500">Jaenab · 2w</div>
+              </div>
+            </a>
+            <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown no-arrow mx-1">
+          <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-tasks fa-fw"></i>
+            <span class="badge badge-success badge-counter">3</span>
           </a>
-          <a class="dropdown-item">
-            <i class="mdi mdi-logout text-primary"></i>
-            Logout
+          <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+            aria-labelledby="messagesDropdown">
+            <h6 class="dropdown-header">
+              Task
+            </h6>
+            <a class="dropdown-item align-items-center" href="#">
+              <div class="mb-3">
+                <div class="small text-gray-500">Design Button
+                  <div class="small float-right"><b>50%</b></div>
+                </div>
+                <div class="progress" style="height: 12px;">
+                  <div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="50"
+                    aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+            </a>
+            <a class="dropdown-item align-items-center" href="#">
+              <div class="mb-3">
+                <div class="small text-gray-500">Make Beautiful Transitions
+                  <div class="small float-right"><b>30%</b></div>
+                </div>
+                <div class="progress" style="height: 12px;">
+                  <div class="progress-bar bg-warning" role="progressbar" style="width: 30%" aria-valuenow="30"
+                    aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+            </a>
+            <a class="dropdown-item align-items-center" href="#">
+              <div class="mb-3">
+                <div class="small text-gray-500">Create Pie Chart
+                  <div class="small float-right"><b>75%</b></div>
+                </div>
+                <div class="progress" style="height: 12px;">
+                  <div class="progress-bar bg-danger" role="progressbar" style="width: 75%" aria-valuenow="75"
+                    aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+            </a>
+            <a class="dropdown-item text-center small text-gray-500" href="#">View All Taks</a>
+          </div>
+        </li>
+        <div class="topbar-divider d-none d-sm-block"></div>
+        <li class="nav-item dropdown no-arrow">
+          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <img class="img-profile rounded-circle" src="{{asset('rafi/img/boy.png')}}" style="max-width: 60px">
+            <span class="ml-2 d-none d-lg-inline text-white small">
+              @if (auth()->user()->role === 'admin')
+              <div class="info">
+                ADMIN
+              </div>
+              @endif
+             @if (auth()->user()->role === 'kasir')
+              <div class="info">
+                PETUGAS
+              </div>
+            @endif
+            @if (auth()->user()->role === 'owner')
+              <div class="info">
+                MASYARAKAT
+              </div>
+            @endif
+            </span>
           </a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a href="#" class="nav-link icon-link">
-          <i class="mdi mdi-plus-circle-outline"></i>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a href="#" class="nav-link icon-link">
-          <i class="mdi mdi-web"></i>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a href="#" class="nav-link icon-link">
-          <i class="mdi mdi-clock-outline"></i>
-        </a>
-      </li>
-    </ul>
-  </div>
-</nav>
+          <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+            <a class="dropdown-item" href="#">
+              <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+              Profile
+            </a>
+            <a class="dropdown-item" href="#">
+              <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+              Settings
+            </a>
+            <a class="dropdown-item" href="#">
+              <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+              Activity Log
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="javascript:void(0);" data-toggle="modal" data-target="#logoutModal">
+              <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+              Logout
+            </a>
+          </div>
+        </li>
+      </ul>
+    </nav>

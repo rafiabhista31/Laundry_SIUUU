@@ -1,17 +1,19 @@
 @extends('master')
 
 @section('content')
-  <h1 class="he">INDECK NICH!!!</h1>
+
+
+  <h1 class="he">Paket Index</h1>
   <a class="btn btn-info mr-3" href="/outlet/create">create</a>
-<div class="table-bordered">
+<div class="table-responsive">
   <table class="table">
     <thead>
       <tr>
         <td class="td1">No</td>
         <td class="td5">Nama</td>
-        <td class="td2">telepon</td>
-        <td class="td3">Alamat</td>
-        <td class="td4">Action</td>
+        <td class="td2">Alamat</td>
+        <td class="td3">No Telpon</td>
+        <td class="td3">Action</td>
       </tr>
     </thead>
     <tbody>
@@ -32,8 +34,8 @@
       </tr>
     </tr>
     </tbody>
-
     @endforeach
+</table>
 </div>
 
 @endsection

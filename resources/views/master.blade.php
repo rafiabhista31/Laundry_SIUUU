@@ -2,59 +2,40 @@
 <html lang="en">
 
 <head>
-  <!-- Required meta tags -->
   <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Spica Admin</title>
-  <!-- base:css -->
-  <link rel="stylesheet" href="{{asset('spica/vendors/mdi/css/materialdesignicons.min.css')}}">
-  <link rel="stylesheet" href="{{asset('spicavendors/css/vendor.bundle.base.css')}}">
-  <!-- endinject -->
-  <!-- plugin css for this page -->
-  <!-- End plugin css for this page -->
-  <!-- inject:css -->
-  <link rel="stylesheet" href="{{asset('spica/css/style.css')}}">
-  <!-- endinject -->
-  <link rel="shortcut icon" href="{{asset('spica/images/favicon.png')}}" />
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link href="{{asset('rafi/img/logo/logo.png')}}" rel="icon">
+  <title>RuangAdmin - Blank Page</title>
+  <link href="{{asset('rafi/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
+  <link href="{{asset('rafi/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
+  <link href="{{asset('rafi/css/ruang-admin.min.css')}}" rel="stylesheet">
 </head>
-<body>
-  <div class="container-scroller d-flex">
-    <!-- partial:./partials/_sidebar.html -->
-    @include('template.partials.sidebar')
-    <!-- partial -->
-    <div class="container-fluid page-body-wrapper">
-      <!-- partial:./partials/_navbar.html -->
-      @include('template.partials.navbar')
-      <!-- partial -->
-      <div class="main-panel">
-        @include('template.partials.content')
-        <!-- content-wrapper ends -->
-        <!-- partial:./partials/_footer.html -->
-       @include('template.partials.footer')
-        <!-- partial -->
-      </div>
-      <!-- main-panel ends -->
-    </div>
-    <!-- page-body-wrapper ends -->
-  </div>
-  <!-- container-scroller -->
 
-  <!-- base:js -->
-  <script src="{{asset('spica/vendors/js/vendor.bundle.base.js')}}"></script>
-  <!-- endinject -->
-  <!-- Plugin js for this page-->
-  <script src="{{asset('spica/vendors/chart.js/Chart.min.js')}}"></script>
-  <!-- End plugin js for this page-->
-  <!-- inject:js -->
-  <script src="{{asset('spica/js/off-canvas.js')}}"></script>
-  <script src="{{asset('spica/js/hoverable-collapse.js')}}"></script>
-  <script src="{{asset('spica/js/template.js')}}"></script>
-  <!-- endinject -->
-  <!-- plugin js for this page -->
-  <!-- End plugin js for this page -->
-  <!-- Custom js for this page-->
-  <script src="{{asset('spica/js/dashboard.js')}}"></script>
-  <!-- End custom js for this page-->
+<body id="page-top">
+  @include('template.partials.sidebar')
+    <!-- Sidebar -->
+    @include('template.partials.navbar')
+        <!-- Topbar -->
+
+        <!-- Container Fluid-->
+        @include('template.partials.content')
+      <!-- Footer -->
+      </div>
+      @include('template.partials.footer')
+
+  <!-- Scroll to top -->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <script src="{{asset('rafi/vendor/jquery/jquery.min.js')}}"></script>
+  <script src="{{asset('rafi/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+  <script src="{{asset('rafi/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
+  <script src="{{asset('rafi/js/ruang-admin.min.js')}}"></script>
+
 </body>
 
 </html>

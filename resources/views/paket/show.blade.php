@@ -14,7 +14,7 @@
         <div class="form-group">
           <label for="outlet_id">Outlet Id</label>
           <input type="text" name="outlet_id" class="form-control" id="inputNIS" 
-          value="{{ $paket->outlet_id }}" disabled placeholder="Enter Nomer Induk Siswa"> 
+          value="{{ $paket->outlet_id }}"disabled placeholder="Enter Nomer Induk Siswa"> 
         </div>
         <div class="form-group">
           <label>Jenis</label>
@@ -28,18 +28,18 @@
          <div class="form-group">
              <label for="harga_awal">Nama Paket</label>
              <input type="text" name="nama_paket" class="form-control" id="harga_awal" 
-             value="{{$paket->nama_paket}}" placeholder="Masukan harga awal">
+             value="{{$paket->nama_paket}}"disabled placeholder="Masukan harga awal">
            </div>
            <div class="form-group">
              <label for="harga_awal">Harga </label>
              <input type="text" name="harga" class="form-control" id="harga_awal" 
-             value="{{$paket->harga}}" placeholder="Masukan harga awal">
+             value="{{$paket->harga}}"disabled placeholder="Masukan harga awal">
            </div>
+           <a href="/paket" style="float:left" class="btn btn-info">Back</a>
        </div>
        <!-- /.card-body -->
        <div class="card-footer">
-         <button type="submit" class="btn btn-primary">Submit</button> 
-       </div>
+      </div>
      </form>
    </div>
  </div>

@@ -20,6 +20,12 @@ class TransaksiController extends Controller
     public function index()
     {
         //
+        $transaksis = Transaksi::all();
+        $members    = Member::all();
+        $pakets     = Paket::all()->where('outlet_id', Auth()->user()->outlet_id);
+        $outlets    = Outlet::all();
+        $users      = User::all();
+        return view('transaksi.index',compact('members','pakets','transaksis','outlets','users'));
        
     }
 
@@ -34,7 +40,9 @@ class TransaksiController extends Controller
         $transaksis = Transaksi::all();
         $members    = Member::all();
         $pakets     = Paket::all()->where('outlet_id', Auth()->user()->outlet_id);
-        return view('transaksi.create',compact('members','pakets','transaksis'));
+        $outlets    = Outlet::all();
+        $users      = User::all();
+        return view('transaksi.create',compact('members','pakets','transaksis','outlets','users'));
     }
 
     /**

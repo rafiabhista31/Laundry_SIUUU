@@ -4,7 +4,7 @@
 <div class="col-md-12">
   <div class="card card-primary">
      <div class="card-header">
-       <h3 class="card-title">Masukan Data Barang</h3>
+       <h3 class="card-title">Detail Transaksi Anda</h3>
      </div>
      <!-- /.card-header -->
      <!-- form start -->
@@ -14,7 +14,7 @@
         <div class="form-group">
           <label for="outlet_id">Outlet Id</label>
           <input type="text" name="outlet_id" class="form-control" id="inputNIS" 
-          placeholder="Enter Nomer Induk Siswa"value="{{ $transaksi->outlet_id }}" disabled > 
+          placeholder="Nama Outlet"value="{{ $transaksi->outlet_id }}" disabled > 
         </div>
              <div class="form-group">
                <label for="Kode_Invoice">Kode Invoice</label>
@@ -24,7 +24,7 @@
              <div class="form-group">
               <label for="member_id">Member Id</label>
               <input type="text" name="member_id" class="form-control" id="inputNIS" 
-              placeholder="Enter Nomer Induk Siswa"value="{{ $transaksi->member_id }}" disabled > 
+              placeholder="Nama Member"value="{{ $transaksi->member_id }}" disabled > 
             </div>
               <div class="form-group">
                 <label for="harga_awal">Tanggal</label>
@@ -39,7 +39,7 @@
               <div class="form-group">
                 <label for="harga_awal">Batas Waktu</label>
                 <input type="date" name="batas_waktu" class="form-control" id="Batas_Waktu" 
-                placeholder="Tanggal Bayar" value="{{$transaksi->batas_waktu}}" disabled>
+                placeholder="Batas Waktu" value="{{$transaksi->batas_waktu}}" disabled>
               </div>
               <div class="form-group">
                 <label for="harga_awal">Biaya Tambahan</label>
@@ -60,22 +60,21 @@
             <div class="form-group">
               <label for="statsu">Dibayar</label>
               <input type="text" name="status" class="form-control" id="inputNIS" 
-              placeholder="Enter Nomer Induk Siswa"value="{{ $transaksi->status }}" disabled > 
+              placeholder="Status"value="{{ $transaksi->status }}" disabled > 
             </div>
             <div class="form-group">
               <label for="status">Dibayar</label>
               <input type="text" name="dibayar" class="form-control" id="inputNIS" 
-              placeholder="Enter Nomer Induk Siswa"value="{{ $transaksi->dibayar }}" disabled > 
+              placeholder="Status Pembayaran"value="{{ $transaksi->dibayar }}" disabled > 
             </div>
             <div class="form-group">
               <label for="user_id">User Id</label>
               <input type="text" name="user_id" class="form-control" id="inputNIS" 
-              placeholder="Enter Nomer Induk Siswa"value="{{ $transaksi->user_id }}" disabled > 
+              placeholder="Nama User"value="{{ $transaksi->user_id }}" disabled > 
             </div>
        </div>
        <!-- /.card-body -->
        <div class="card-footer">
-         <button type="submit" class="btn btn-primary">Submit</button> 
        </div>
      </form>
    </div>
