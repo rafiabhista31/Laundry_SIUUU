@@ -66,3 +66,10 @@ Route::resource('transaksi',TransaksiController::class)->middleware('auth','role
 
 //transaksi
 Route::resource('detailtransaksi', DetailTransaksiController::class)->middleware('auth','role:admin');
+
+Route::middleware(['auth', 'role:kasir'])->group(function(){
+    Route::get('transaksi/baru', [TransaksiController::class, 'create'])->name('transaksi.baru');
+    Route::get('transaksi/{transaksi}', [TransaksiController::class, 'edit'])->name('transaksi.proses');
+    Route::post('transaksi/simpan', [TransaksiController::class, 'store'])->name('transaksi.store');
+    // Route::post('transaksi/', [TransaksiController::class, 'index'])->name('transaksi.index');
+});

@@ -7,6 +7,7 @@ use App\Models\Outlet;
 use App\Models\Member;
 use App\Models\User;
 use App\Models\Paket;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -37,12 +38,22 @@ class TransaksiController extends Controller
     public function create()
     {
         //
-        $transaksis = Transaksi::all();
-        $members    = Member::all();
-        $pakets     = Paket::all()->where('outlet_id', Auth()->user()->outlet_id);
-        $outlets    = Outlet::all();
-        $users      = User::all();
-        return view('transaksi.create',compact('members','pakets','transaksis','outlets','users'));
+        $transaksi = new Transaksi;
+        $transaksi->user_id         = Auth::user()->id;
+        $transaksi->outlet_id       = Auth::user()->outlet_id;
+        $transaksi->kode_invoice    = '';
+        $transaksi->member_id       = '';
+        $transaksi->tgl             = Carbon::now()->format('Y-m-d');
+        $transaksi->batas_waktu     ='';
+        $transaksi->tgl_bayar       = '';
+        $transaksi->biaya_tambahan  = '';
+        $transaksi->diskon          = '';
+        $transaksi->pajak           = '';
+        $transaksi->status          = 'baru';
+        $transaksi->dibayar         = '';
+        
+        return redirect()->route('transaksi.proses', $transaksi->id);
+
     }
 
     /**
