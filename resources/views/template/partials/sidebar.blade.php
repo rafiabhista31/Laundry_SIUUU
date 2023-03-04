@@ -8,11 +8,27 @@
       <div class="sidebar-brand-text mx-3">Laundry Siuuu</div>
     </a>
     <hr class="sidebar-divider my-0">
+    @if (auth()->user()->role == 'admin')
     <li class="nav-item">
-      <a class="nav-link" href="index.html">
+      <a class="nav-link" href="/dashboard/admin">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Dashboard</span></a>
     </li>
+    @endif
+    @if (auth()->user()->role == 'kasir')
+    <li class="nav-item">
+      <a class="nav-link" href="/dashboard/kasir">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Dashboard</span></a>
+    </li>
+    @endif
+    @if (auth()->user()->role == 'owner')
+    <li class="nav-item">
+      <a class="nav-link" href="/dashboard/owner">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Dashboard</span></a>
+    </li>
+    @endif
     <hr class="sidebar-divider">
     <div class="sidebar-heading">
       Features
@@ -38,6 +54,14 @@
       <a class="nav-link" href="/member">
         <i class="fa fa-table" aria-hidden="true"></i>
         <span>Member</span>
+      </a>
+    </li>
+    @endif
+    @if (auth()->user()->role == 'admin')
+    <li class="nav-item">
+      <a class="nav-link" href="/user">
+        <i class="fa fa-table" aria-hidden="true"></i>
+        <span>User</span>
       </a>
     </li>
     @endif

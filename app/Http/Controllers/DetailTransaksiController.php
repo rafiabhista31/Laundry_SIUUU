@@ -43,20 +43,25 @@ class DetailTransaksiController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $transaksi)
     {
         //
         $request->validate([
-            'transaksi_id'           => 'required',
-            'paket_id'               => 'required',
-            'qty'                    => 'required',
+            'paket_id'  => 'required',
+            'qty'       => 'required'
+        ],
+        [
+            'paket_id.required' => 'Pilih Paket',
+            'qty.required'      => 'Isi Qty'
         ]);
-        DetailTransaksi::create([
-            'transaksi_id'           => $request->transaksi_id,
-            'paket_id'               => $request->paket_id,
-            'qty'                    => $request->qty,
-        ]);
-        return redirect('/detailtransaksi');
+
+        $detailTransaksi = new DetailTransaksi;
+        $detailTransaksi->transaksi_id  = $transaksi;
+        $detailTransaksi->paket_id      = $request->paket_id;
+        $detailTransaksi->qty           = $request->qty;
+        $detailTransaksi->save();
+
+        return redirect()->route('transaksi.proses', $transaksi);
     }
 
     /**

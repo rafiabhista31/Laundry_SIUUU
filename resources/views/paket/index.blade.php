@@ -2,6 +2,8 @@
 
 @section('content')
 
+<div class="card">
+  <div class="card-body">
   <h1 class="he">Paket Index</h1>
   <a class="btn btn-info mr-3" href="/paket/create">create</a>
 <div class="table-responsive">
@@ -37,5 +39,7 @@
     </tbody>
     @endforeach
 </table>
+</div>
+  </div>
 </div>
 @endsection

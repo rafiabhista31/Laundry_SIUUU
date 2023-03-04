@@ -21,6 +21,17 @@
       <div class="card-body"><strong>
         Anda berada di dashboard kasir
       </strong>
+      <form action="{{ route('transaksi.baru') }}" method="POST">
+        @csrf
+        <select class="form-control select2" style="width: 100%;" name="member_id">
+          <option selected="selected" disabled>-- Pilih Member --</option>
+          @foreach ($members as $item)
+            <option value="{{ $item->id }}">{{ $item->nama }}</option>
+          @endforeach
+        </select>
+        <br><br>
+        <input type="submit" value="Transaksi baru" class="btn btn-success btn-lg">
+      </form>
       </div>
       <!-- /.card-body -->
       <div class="card-footer"><strong>
@@ -32,5 +43,8 @@
     <!-- /.card -->
 
   </section>
-
 @endsection
+
+<!--Select 2-->
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>

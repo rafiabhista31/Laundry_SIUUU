@@ -7,6 +7,7 @@ use App\Http\Controllers\MemberController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\OutletController;
 use App\Http\Controllers\PaketController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\DetailTransaksiController;
 
@@ -64,12 +65,14 @@ Route::resource('member', MemberController::class)->middleware('auth','role:admi
 //transaksi
 Route::resource('transaksi',TransaksiController::class)->middleware('auth','role:admin');
 
-//transaksi
-Route::resource('detailtransaksi', DetailTransaksiController::class)->middleware('auth','role:admin');
+//user
+Route::resource('user',UserController::class)->middleware('auth','role:admin');
 
 Route::middleware(['auth', 'role:kasir'])->group(function(){
-    Route::get('transaksi/baru', [TransaksiController::class, 'create'])->name('transaksi.baru');
+    Route::post('transaksi/baru', [TransaksiController::class, 'create'])->name('transaksi.baru');
     Route::get('transaksi/{transaksi}', [TransaksiController::class, 'edit'])->name('transaksi.proses');
     Route::post('transaksi/simpan', [TransaksiController::class, 'store'])->name('transaksi.store');
+    Route::post('transaksi/{id}/detail', [DetailTransaksiController::class, 'store'])
+    ->name('transaksi.detail.store');
     // Route::post('transaksi/', [TransaksiController::class, 'index'])->name('transaksi.index');
 });
