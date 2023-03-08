@@ -28,13 +28,13 @@ class DetailTransaksiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Transaksi $transaksi)
     {
         //
-        $detailTransaksi = DetailTransaksi::all();
-        $transaksi       = Transaksi::all();
+        $detailTransaksi = DetailTransaksi::find($transaksi->id);
+        $transaksis       = Transaksi::all();
         $paket           = Paket::all();
-        return view('detail_transaksi.create', compact('detailTransaksi','transaksi','paket'));
+        return view('detail_transaksi.create', compact('detailTransaksi','transaksis','paket'));
     }
 
     /**
@@ -43,15 +43,15 @@ class DetailTransaksiController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $transaksi)
+    public function store(Request $request, transaksi $transaksi)
     {
         //
         $request->validate([
-            'paket_id'  => 'required',
+            'id_paket'  => 'required',
             'qty'       => 'required'
         ],
         [
-            'paket_id.required' => 'Pilih Paket',
+            'id_paket.required' => 'Pilih Paket',
             'qty.required'      => 'Isi Qty'
         ]);
 
@@ -63,7 +63,6 @@ class DetailTransaksiController extends Controller
 
         return redirect()->route('transaksi.proses', $transaksi);
     }
-
     /**
      * Display the specified resource.
      *

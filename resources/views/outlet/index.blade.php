@@ -2,7 +2,7 @@
 
 @section('content')
 
-
+<div class="col-md-12">
   <h1 class="he">Paket Index</h1>
   <a class="btn btn-info mr-3" href="/outlet/create">create</a>
 <div class="table-responsive">
@@ -36,6 +36,7 @@
     </tbody>
     @endforeach
 </table>
+</div>
 </div>
 
 @endsection

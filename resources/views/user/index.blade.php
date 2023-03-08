@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('content')
-
+<div class="col-md-12">
 <div class="card">
     <div class="card-header d-flex justify-content-between mb-3">
       <a href="/user/create" class="btn btn-primary">Tambah Operator</a>
@@ -55,6 +55,7 @@
         </tbody>
         </table>
     </div>
+  </div>
     <!-- /.card-body -->
 
 @endsection

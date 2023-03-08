@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DetailTransaksi;
 use App\Models\Transaksi;
 use App\Models\Outlet;
 use App\Models\Member;
@@ -66,35 +67,7 @@ class TransaksiController extends Controller
     public function store(Request $request)
     {
         //
-        // $request->validate([
-        //     'outlet_id'           => 'required',
-        //     'kode_invoice'        => 'required',
-        //     'member_id'           => 'required',
-        //     'tgl'                 => 'required',
-        //     'batas_waktu'         => 'required',
-        //     'tgl_bayar'           => 'required',
-        //     'biaya_tambahan'      => 'required',
-        //     'diskon'              => 'required',
-        //     'pajak'               => 'required',
-        //     'status'              => 'required',
-        //     'dibayar'             => 'required',
-        //     'user_id'             => 'required',
-        // ]);
-        // Transaksi::create([
-        //     'outlet_id'           => $request->outlet_id,
-        //     'kode_invoice'        => $request->kode_invoice,
-        //     'member_id'           => $request->member_id,
-        //     'tgl'                 => $request->tgl,
-        //     'batas_waktu'         => $request->batas_waktu,
-        //     'tgl_bayar'           => $request->tgl_bayar,
-        //     'biaya_tambahan'      => $request->biaya_tambahan,
-        //     'diskon'              => $request->diskon,
-        //     'pajak'               => $request->pajak,
-        //     'status'              => $request->status,
-        //     'dibayar'             => $request->dibayar,
-        //     'user_id'             => $request->user_id,
-        // ]);
-        // return redirect('/transaksi');
+
     }
 
     /**
@@ -124,7 +97,8 @@ class TransaksiController extends Controller
         //
         $pakets = Paket::all()->where('outlet_id', $transaksi->outlet_id);
         $transaksis = Transaksi::all();
-        return view('transaksi.proses', compact('pakets','transaksis'));
+        $detailTransaksis = DetailTransaksi::find($transaksi->id);
+        return view('transaksi.proses', compact('pakets','transaksis','detailTransaksis'));
     }
 
     /**

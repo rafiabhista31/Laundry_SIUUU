@@ -14,12 +14,12 @@
       <div class="card-body">
         <div class="row">
           <div class="form-group">
-            <label>Nama</label>
-            <input type="text" name="nama" class="form-control p_input">
+            <label for="nama">Nama</label>
+            <input type="text" name="nama" class="form-control" id="harga_awal" placeholder="Enter Nama Paket">
           </div>
           <div class="form-group">
-            <label>Username</label>
-            <input type="text" name="username" class="form-control p_input">
+            <label for="username">Username</label>
+            <input type="text" name="username" class="form-control" id="harga_awal" placeholder="Enter Nama Paket">
           </div>
           <div class="form-group">
             <label>Password</label>

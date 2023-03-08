@@ -31,13 +31,6 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 text-center text-lg-left mb-2 mb-lg-0">
-                    <div class="d-inline-flex align-items-center">
-                        <a class="text-white pr-3" href="">FAQs</a>
-                        <span class="text-white">|</span>
-                        <a class="text-white px-3" href="">Help</a>
-                        <span class="text-white">|</span>
-                        <a class="text-white pl-3" href="">Support</a>
-                    </div>
                 </div>
                 <div class="col-md-6 text-center text-lg-right">
                     <div class="d-inline-flex align-items-center">
@@ -85,18 +78,9 @@
                         <a href="{{ route('register') }}" class="nav-item nav-link">Register</a>
                         @endif
                         @endauth
-                        <a href="pricing.html" class="nav-item nav-link">Pricing</a>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
-                            <div class="dropdown-menu border-0 rounded-0 m-0">
-                                <a href="blog.html" class="dropdown-item">Blog Grid</a>
-                                <a href="single.html" class="dropdown-item">Blog Detail</a>
-                            </div>
-                        </div>
                     </div>
                     @endif
                 </div>
-                        <a href="contact.html" class="nav-item nav-link">Contact</a>
                     </div>
                 </div>
             </nav>

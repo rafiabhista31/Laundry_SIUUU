@@ -22,7 +22,7 @@
       <tr>
         @foreach($paket as $paket)
         <th class="th1">{{ $loop->iteration}}</th>
-        <td class="th2">{{ $paket->outlet_id }}</td>
+        <td class="th2">{{ $paket->outlet->nama }}</td>
         <td class="th3">{{ $paket->jenis }}</td>
         <td class="th2">{{ $paket->nama_paket }}</td>
         <td class="th2">{{ $paket->harga }}</td>

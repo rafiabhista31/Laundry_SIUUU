@@ -16,16 +16,20 @@ class Transaksi extends Model
 
     public function outlet()
     {
-        return $this->hasOne('App\Outlet','outlet_id');
+        return $this->hasOne('App\Models\Outlet','id','outlet_id');
     }
 
     public function Member()
     {
-        return $this->hasOne('App\Member','member_id');
+        return $this->hasOne('App\Models\Member','id','member_id');
     }
     
     public function user()
     {
-        return $this->hasOne('App\User','user_id');
+        return $this->hasOne('App\Models\User','id','user_id');
+    }
+    public function paket()
+    {
+        return $this->hasOne('App\Models\Paket','id','paket_id');
     }
 }

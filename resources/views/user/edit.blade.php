@@ -25,6 +25,7 @@
                 <label for="level">Otoritas</label>
                   <select name="role" id="role" class="form-select form-control" data-parsley-required>
                     <option value="" disabled><strong>PILIH ROLE</strong></option>
+                    <option value="admin">Admin</option>
                     <option value="owner">Owner</option>
                     <option value="kasir">Kasir</option>
                   </select>

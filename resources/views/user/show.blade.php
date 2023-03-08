@@ -2,7 +2,7 @@
 
 
 @section('content')
-
+<div class="row">
 <div class="col-md-12">
  <div class="card card-primary">
     <div class="card-header">
@@ -41,16 +41,25 @@
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-6 d-flex justify-content-start">
-            <a href="/barang" class="btn btn-outline-info">
+        @if (auth()->user()->role == 'admin')
+          <div>
+            <a href="/dashboard/admin" class="btn btn-outline-info">
               Kembali
             </a>
           </div>
+          @endif
+          @if (auth()->user()->role == 'kasir')
+          <div>
+            <a href="/dashboard/kasir" class="btn btn-outline-info">
+              Kembali
+            </a>
+          </div>
+          @endif
         </div>
       </div>
       <!-- /.card-body -->
     </form>
   </div>
+</div>
 </div>
 @endsection
