@@ -25,7 +25,6 @@
         <td class="th2">{{ $outlet->tlp }}</td>
         <td class="th4">
         <form action="{{route ('outlet.destroy', [$outlet->id])}}" method="POST">
-        <a class="btn btn-info mr-3" href="outlet/{{ $outlet->id }}">DETAIL</a>
         <a class="btn btn-warning mr-3" href="outlet/{{ $outlet->id}}/edit">EDIT</a>
         @csrf
         @method('DELETE')

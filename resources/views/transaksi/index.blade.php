@@ -30,7 +30,10 @@
             <td>{{$trx->user_id}}</td>
             <td>
               <form action="{{route ('transaksi.destroy', [$trx->id])}}" method="POST">
-                <a class="btn btn-info mr-3" href="transaksi/{{ $trx->id }}">DETAIL</a>
+                <a class="btn btn-info mr-3" href="{{route('user.show', $trx->id)}}">
+                  <i class="far fa-eye"></i>
+                Detail
+                </a>
                 <a class="btn btn-warning mr-3" href="transaksi/{{ $trx->id}}/edit">EDIT</a>
                 @csrf
                 @method('DELETE')

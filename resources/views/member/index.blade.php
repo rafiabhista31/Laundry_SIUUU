@@ -26,7 +26,6 @@
         <td class="th2">{{ $member->jenis_kelamin }}</td>
         <td class="th4">
         <form action="{{route ('member.destroy', [$member->id])}}" method="POST">
-        <a class="btn btn-info mr-3" href="member/{{ $member->id }}">DETAIL</a>
         <a class="btn btn-warning mr-3" href="member/{{ $member->id}}/edit">EDIT</a>
         @csrf
         @method('DELETE')

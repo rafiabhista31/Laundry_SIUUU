@@ -11,16 +11,16 @@ class DetailTransaksiController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
+     * 
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
         //
-        $detailTransaksi = DetailTransaksi::all();
-        $transaksi       = Transaksi::all();
-        $paket           = Paket::all();
-        return view('detail_transaksi.index', compact('detailTransaksi','transaksi','paket'));
+        // $detailTransaksi = DetailTransaksi::all();
+        // $transaksi       = Transaksi::all();
+        // $paket           = Paket::all();
+        // return view('detailtransaksi.index', compact('detailTransaksi','transaksi','paket'));
     }
 
     /**
@@ -31,10 +31,10 @@ class DetailTransaksiController extends Controller
     public function create(Transaksi $transaksi)
     {
         //
-        $detailTransaksi = DetailTransaksi::find($transaksi->id);
-        $transaksis       = Transaksi::all();
-        $paket           = Paket::all();
-        return view('detail_transaksi.create', compact('detailTransaksi','transaksis','paket'));
+        // $detailTransaksi = DetailTransaksi::find($transaksi->id);
+        // $transaksis       = Transaksi::all();
+        // $paket           = Paket::all();
+        // return view('detail_transaksi.create', compact('detailTransaksi','transaksis','paket'));
     }
 
     /**
@@ -43,15 +43,15 @@ class DetailTransaksiController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, transaksi $transaksi)
+    public function store(Request $request, $transaksi)
     {
         //
         $request->validate([
-            'id_paket'  => 'required',
+            'paket_id'  => 'required',
             'qty'       => 'required'
         ],
         [
-            'id_paket.required' => 'Pilih Paket',
+            'paket_id.required' => 'Pilih Paket',
             'qty.required'      => 'Isi Qty'
         ]);
 

@@ -32,4 +32,7 @@ class Transaksi extends Model
     {
         return $this->hasOne('App\Models\Paket','id','paket_id');
     }
+    public function detailtransaksi(){
+        return $this->belongsTo('App\Models\DetailTransaksi','detailtransaksi');
+    }
 }

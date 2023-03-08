@@ -31,10 +31,6 @@
             <td> <center>
 
               <form action="{{route('user.destroy', $user->id)}}" method="POST">
-                <a class="btn btn-info mr-3" href="{{route('user.show', $user->id)}}">
-                  <i class="far fa-eye"></i>
-                Detail
-                </a>
                 <a class="btn btn-warning mr-3" href="{{route('user.edit', $user->id)}}">
                   <i class="fas fa-edit"></i>
                   Edit
