@@ -63,12 +63,12 @@ route::resource('paket', PaketController::class)->middleware('auth','role:admin'
 Route::resource('member', MemberController::class)->middleware('auth','role:admin,kasir');
 
 //transaksi
-Route::resource('transaksi',TransaksiController::class)->middleware('auth','role:admin');
+Route::resource('transaksi',TransaksiController::class)->middleware('auth','role:admin,kasir');
 
 //user
 Route::resource('user',UserController::class)->middleware('auth','role:admin');
 
-Route::middleware(['auth', 'role:kasir'])->group(function(){
+Route::middleware(['auth', 'role:kasir,admin'])->group(function(){
     Route::post('transaksi/baru', [TransaksiController::class, 'create'])->name('transaksi.baru');
     Route::get('transaksi/{transaksi}', [TransaksiController::class, 'edit'])->name('transaksi.proses');
     Route::post('transaksi/simpan', [TransaksiController::class, 'store'])->name('transaksi.store');

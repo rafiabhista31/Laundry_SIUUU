@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DetailTransaksi;
 use App\Models\Transaksi;
 use App\Models\Outlet;
 use App\Models\Member;
@@ -10,6 +11,7 @@ use App\Models\Paket;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
 
 class TransaksiController extends Controller
 {
@@ -41,8 +43,8 @@ class TransaksiController extends Controller
         $transaksi = new Transaksi;
         $transaksi->outlet_id       = Auth::user()->outlet_id;
         $transaksi->kode_invoice    = '';
-        $transaksi->member_id       = '1';
-        $transaksi->tgl             = Carbon::now()->format('Y-m-d');
+        $transaksi->member_id       = $request->member_id;
+        $transaksi->tgl             = Carbon::now('Asia/Jakarta')->format('Y-m-d H:i:s');
         $transaksi->batas_waktu     = Carbon::now()->format('Y-m-d');
         $transaksi->tgl_bayar       = Carbon::now()->format('Y-m-d');
         $transaksi->biaya_tambahan  = 0;
@@ -106,10 +108,10 @@ class TransaksiController extends Controller
     public function show(Transaksi $transaksi)
     {
         //
+        $transaksis  = Transaksi::find($transaksi->id);
         $members     = Member::all();
         $outlets    = Outlet::all();
         $users       = User::all();
-        $transaksis  = Transaksi::find($transaksi->id);
         return view('transaksi.show', compact('transaksis', 'members', 'outlets', 'users'));
     }
 
@@ -117,7 +119,7 @@ class TransaksiController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Transaksi  $transaksi
-     * @return \Illuminate\Http\Response
+    * @return \Illuminate\Http\Response
      */
     public function edit(Transaksi $transaksi, Paket $paket)
     {
@@ -125,7 +127,8 @@ class TransaksiController extends Controller
         $transaksis = Transaksi::all();
         $pakets = Paket::all();
         $members = Member::all();
-       return view('transaksi.proses', compact('pakets', 'members','transaksis'));
+        $details = DetailTransaksi::latest()->paginate('1');
+       return view('transaksi.proses', compact('pakets', 'members','transaksis','details'));
     }
 
     /**

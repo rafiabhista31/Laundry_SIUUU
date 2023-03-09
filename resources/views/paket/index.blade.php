@@ -32,7 +32,7 @@
         <a class="btn btn-warning mr-3" href="paket/{{ $paket->id}}/edit">EDIT</a>
         @csrf
         @method('DELETE')
-        <input type="submit" class="btn btn-danger" value="hapus azza">
+        <input type="submit" class="btn btn-danger" value="DELETE">
         </td>
       </tr>
     </tr>

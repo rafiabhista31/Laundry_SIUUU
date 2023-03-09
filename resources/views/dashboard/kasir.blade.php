@@ -5,6 +5,7 @@
 <section class="content">
 
     <!-- Default box -->
+    <div class="col-md-12">
     <div class="card">
       <div class="card-header">
         <h3 class="card-title">Judul</h3>
@@ -41,6 +42,7 @@
       <!-- /.card-footer-->
     </div>
     <!-- /.card -->
+  </div>
 
   </section>
 @endsection

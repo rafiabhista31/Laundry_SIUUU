@@ -14,63 +14,63 @@
         <div class="form-group">
           <label for="outlet_id">Outlet Id</label>
           <input type="text" name="outlet_id" class="form-control" id="inputNIS" 
-          placeholder="Nama Outlet"value="{{ $transaksi->outlet_id }}" disabled > 
+          placeholder="Nama Outlet"value="{{ $transaksis->outlet_id }}" disabled > 
         </div>
              <div class="form-group">
                <label for="Kode_Invoice">Kode Invoice</label>
                <input type="text" name="kode_invoice" class="form-control" id="Kode_Invoice" 
-               placeholder="Kode Invoide" value="{{$transaksi->kode_invoice}}" disabled>
+               placeholder="Kode Invoide" value="{{$transaksis->kode_invoice}}" disabled>
              </div>
              <div class="form-group">
               <label for="member_id">Member Id</label>
               <input type="text" name="member_id" class="form-control" id="inputNIS" 
-              placeholder="Nama Member"value="{{ $transaksi->member_id }}" disabled > 
+              placeholder="Nama Member"value="{{ $transaksis->member_id }}" disabled > 
             </div>
               <div class="form-group">
                 <label for="harga_awal">Tanggal</label>
                 <input type="date" name="tgl" class="form-control" id="Tanggal"
-                 placeholder="Tanggal" value="{{$transaksi->tgl}}" disabled>
+                 placeholder="Tanggal" value="{{$transaksis->tgl}}" disabled>
               </div>
               <div class="form-group">
                 <label for="harga_awal">Tanggal Bayar</label>
                 <input type="date" name="tgl_bayar" class="form-control" id="Tgl_Bayar" 
-                placeholder="Tanggal Bayar" value="{{$transaksi->tgl_bayar}}" disabled>
+                placeholder="Tanggal Bayar" value="{{$transaksis->tgl_bayar}}" disabled>
               </div>
               <div class="form-group">
                 <label for="harga_awal">Batas Waktu</label>
                 <input type="date" name="batas_waktu" class="form-control" id="Batas_Waktu" 
-                placeholder="Batas Waktu" value="{{$transaksi->batas_waktu}}" disabled>
+                placeholder="Batas Waktu" value="{{$transaksis->batas_waktu}}" disabled>
               </div>
               <div class="form-group">
                 <label for="harga_awal">Biaya Tambahan</label>
                 <input type="number" name="biaya_tambahan" class="form-control" id="Biaya_Tambahan" 
-                placeholder="Biaya Tambahan" value="{{$transaksi->biaya_tambahan}}" disabled>
+                placeholder="Biaya Tambahan" value="{{$transaksis->biaya_tambahan}}" disabled>
               </div>
               <div class="form-group">
                 <label for="harga_awal">Diskon</label>
                 <input type="number" name="diskon" class="form-control" id="Diskon" 
-                placeholder="Diskon" value="{{$transaksi->diskon}}" disabled>
+                placeholder="Diskon" value="{{$transaksis->diskon}}" disabled>
               </div>
               <div class="form-group">
                 <label for="harga_awal">Pajak</label>
                 <input type="number" name="pajak" class="form-control" id="Pajak"
-                 placeholder="Pajak" value="{{$transaksi->pajak}}" disabled>
+                 placeholder="Pajak" value="{{$transaksis->pajak}}" disabled>
               </div>
             </select>
             <div class="form-group">
               <label for="statsu">Dibayar</label>
               <input type="text" name="status" class="form-control" id="inputNIS" 
-              placeholder="Status"value="{{ $transaksi->status }}" disabled > 
+              placeholder="Status"value="{{ $transaksis->status }}" disabled > 
             </div>
             <div class="form-group">
               <label for="status">Dibayar</label>
               <input type="text" name="dibayar" class="form-control" id="inputNIS" 
-              placeholder="Status Pembayaran"value="{{ $transaksi->dibayar }}" disabled > 
+              placeholder="Status Pembayaran"value="{{ $transaksis->dibayar }}" disabled > 
             </div>
             <div class="form-group">
               <label for="user_id">User Id</label>
               <input type="text" name="user_id" class="form-control" id="inputNIS" 
-              placeholder="Nama User"value="{{ $transaksi->user_id }}" disabled > 
+              placeholder="Nama User"value="{{ $transaksis->user_id }}" disabled > 
             </div>
        </div>
        <!-- /.card-body -->
@@ -79,4 +79,5 @@
      </form>
    </div>
  </div>
+ <br> <br>
 @endsection

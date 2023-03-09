@@ -2,7 +2,6 @@
 
 @section('content')
     
-<div class="row">
   <div class="col-md-12">
     <!-- Form Element sizes -->
     <div class="card card-success">
@@ -39,10 +38,11 @@
     </div>
     <!-- /.card -->
   </div>
-  </div>
-  <div class="row">
+
+  <br>
+
     <!-- left column -->
-    <div class="col-md-8">
+    <div class="col-md-12">
       <!-- general form elements -->
       <div class="card card-primary">
         <div class="card-header">
@@ -50,25 +50,36 @@
         </div>
         <!-- /.card-header -->
         <!-- form start -->
-        <div class="card-body">
-            <div class="form-group">
-              <label for="exampleInputEmail1">Pilih Data Member</label>
-              <select name="id_member" id="id_member" class="form-control">
-                <option selected disabled>--Pilih Data Member--</option>
-                @forelse ($members as $member)
-                  <option value="{{ $member->nama }}">{{ $member->nama }}</option>                  
-                @empty
-                  <option selected disabled>Tidak Ada Paket Tersedia</option>
+            <!-- /.card-header -->
+              <table id="example2" class="table table-bordered table-hover">
+                <thead>
+            <tr>
+                <td class="td1">No</td>
+                <td class="td3">Nama Member</td>
+                <td class="td3">Nama Paket</td>
+                <td class="td3">Qty</td>
+            </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                  @forelse($details as $dt)
+                  <th class="th1">{{ $loop->iteration}}</th>
+                    <td class="th2">{{ $dt->transaksi_id}}</td>
+                    <td class="th2">{{ $dt->paket->nama_paket}}</td>
+                    <td class="th2">{{ $dt->qty}}</td>
+                 </tr>
+                 @empty
+                 <tr>
+                  <td>Data Masih Kosong</td>
+                </tr>
                 @endforelse
-              </select>
+              </table>
             </div>
-          </div>
-      </div>
       <!-- /.card -->
   
     </div>
     <!--/.col (left) -->
     <!-- right column -->
     <!--/.col (right) -->
-  </div>
+  <br><br>
 @endsection
