@@ -55,7 +55,7 @@
                 <thead>
             <tr>
                 <td class="td1">No</td>
-                <td class="td3">Nama Member</td>
+                <td class="td3">No Transaksi</td>
                 <td class="td3">Nama Paket</td>
                 <td class="td3">Qty</td>
             </tr>
