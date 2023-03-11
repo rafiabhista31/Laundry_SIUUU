@@ -35,7 +35,12 @@
   <script src="{{asset('rafi/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
   <script src="{{asset('rafi/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
   <script src="{{asset('rafi/js/ruang-admin.min.js')}}"></script>
-
+  
+  @section('scripts')
+<script>
+    // Tambahkan kode JavaScript Anda di sini
+</script>
+@endsection
 </body>
 
 </html>

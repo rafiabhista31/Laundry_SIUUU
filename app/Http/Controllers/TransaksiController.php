@@ -127,7 +127,7 @@ class TransaksiController extends Controller
         $transaksis = Transaksi::all();
         $pakets = Paket::all();
         $members = Member::all();
-        $details = DetailTransaksi::latest()->paginate('1');
+        $details = DetailTransaksi::all();
        return view('transaksi.proses', compact('pakets', 'members','transaksis','details'));
     }
 
@@ -184,5 +184,12 @@ class TransaksiController extends Controller
         $transaksi = Transaksi::find($transaksi->id);
         $transaksi->delete();
         return redirect('/transaksi');
+    }
+    public function harga(Paket $pakets)
+    {
+        $pakets = Paket::find($pakets->id);
+        return response()->json([
+            'harga' => $pakets->harga
+        ]);
     }
 }

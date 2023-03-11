@@ -14,14 +14,26 @@ class Outlet extends Model
     ];
     public function paket()
     {
-        return $this->belongsTo('App\Models\Paket','paket');
+        return $this->belongsTo('App\Models\Paket','paket')->onDelete(function ($paket){
+            $paket->delete();
+        });
     }
     public function detailtransaksi()
     {
-        return $this->belongsTo('App\Models\DetailTransaksi','detailtransaksi');
+        return $this->belongsTo('App\Models\DetailTransaksi','detailtransaksi')->onDelete(function ($detailtransaksi){
+            $detailtransaksi->delete();
+        });
     }
     public function transaksi()
     {
-        return $this->belongsTo('App\Models\Transaksi','transaksi');
+        return $this->belongsTo('App\Models\Transaksi','transaksi')->onDelete(function ($transaksi){
+            $transaksi->delete();
+        });
+    }
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User','user')->onDelete(function ($user){
+            $user->delete();
+        });
     }
 }

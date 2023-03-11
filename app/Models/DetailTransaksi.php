@@ -15,24 +15,27 @@ class DetailTransaksi extends Model
 
     public function outlet()
     {
-        return $this->hasOne('App\Models\Outlet','id','outlet_id');
+        return $this->belongsTo('App\Models\Outlet','outlet_id');
     }
-
-    public function Member()
+    
+    public function member()
     {
-        return $this->hasOne('App\Models\Member','id','member_id');
+        return $this->belongsTo('App\Models\Member','member_id');
     }
     
     public function user()
     {
-        return $this->hasOne('App\Models\User','id','user_id');
+        return $this->belongsTo('App\Models\User','user_id');
     }
+    
     public function paket()
     {
-        return $this->hasOne('App\Models\Paket','id','paket_id');
+        return $this->belongsTo('App\Models\Paket','paket_id');
     }
+    
     public function transaksi()
     {
-        return $this->hasOne('App\Models\Transaksi','id','transaksi_id');
+        return $this->belongsTo('App\Models\Transaksi','transaksi_id');
     }
+    
 }

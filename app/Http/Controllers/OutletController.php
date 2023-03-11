@@ -95,8 +95,8 @@ class OutletController extends Controller
             'tlp' => 'required'
         ]);
         $outlet = Outlet::find($outlet->id);
-        $outlet-> nama =  $request->nama;
-        $outlet-> alamat =  $request->alamat;
+        $outlet->nama =  $request->nama;
+        $outlet->alamat =  $request->alamat;
         $outlet->tlp  =  $request->tlp;
         $outlet->update();
         return redirect('/outlet');
