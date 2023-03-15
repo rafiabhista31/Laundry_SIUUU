@@ -16,17 +16,23 @@ class Paket extends Model
 
     public function outlet()
     {
-        return $this->belongsTo('App\Models\Outlet', 'outlet_id');
+        return $this->belongsTo('App\Models\Outlet');
     }
     public function detailtransaksi()
     {
-        return $this->belongsTo('App\Models\DetailTransaksi','transaksi')->onDelete(function ($detailtransaksi){
+        return $this->hasMany('App\Models\DetailTransaksi','id')->onDelete(function ($detailtransaksi){
             $detailtransaksi->delete();
         });
     }
     public function transaksi()
     {
-        return $this->belongsTo('App\Models\Transaksi','transaksi')->onDelete(function ($transaksi){
+        return $this->hasMany('App\Models\Transaksi','transaksi')->onDelete(function ($transaksi){
+            $transaksi->delete();
+        });
+    }
+    public function transaksiDetail()
+    {
+        return $this->hasMany('App\Models\Transaksi','transaksi')->onDelete(function ($transaksi){
             $transaksi->delete();
         });
     }

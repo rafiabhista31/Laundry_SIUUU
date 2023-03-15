@@ -11,6 +11,7 @@ use App\Models\Paket;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Events;
 
 
 class TransaksiController extends Controller
@@ -21,16 +22,10 @@ class TransaksiController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
-        $transaksis = Transaksi::all();
-        $members = Member::all();
-        $pakets = Paket::all()->where('outlets_id', Auth()->user()->outlets_id);
-        $outlets = Outlet::all();
-        $users = User::all();
-        $transaksi = Transaksi::all();
-        return view('transaksi.index', compact('members', 'pakets', 'transaksis', 'outlets', 'users'));
-    }
+{
+    return view('transaksi.index'); // tambahkan variabel $selected_paket dan $harga ke dalam view
+}
+
 
     /**
      * Show the form for creating a new resource.
@@ -40,13 +35,25 @@ class TransaksiController extends Controller
     public function create(Transaksi $transaksi, Request $request)
     {
         //
-        $transaksi = new Transaksi;
+        $lastTransaksi = Transaksi::orderBy('id', 'desc')->first();
+        $lastNumber = 0;
+        if ($lastTransaksi) {
+            $lastNumber = substr($lastTransaksi->kode_invoice, 3);
+        }
+        $nextNumber = str_pad($lastNumber + 1, 3, '0', STR_PAD_LEFT);
+        $transaksi->kode_invoice = 'trx' . $nextNumber;
+        
         $transaksi->outlet_id       = Auth::user()->outlet_id;
         $transaksi->kode_invoice    = '';
-        $transaksi->member_id       = $request->member_id;
+        if ($request->has('member_id')) {
+            $transaksi->member_id = $request->member_id;
+        } else {
+            // member_id tidak ada di request, maka berikan nilai default 0
+            $transaksi->member_id = 1;
+        }
         $transaksi->tgl             = Carbon::now('Asia/Jakarta')->format('Y-m-d H:i:s');
-        $transaksi->batas_waktu     = Carbon::now()->format('Y-m-d');
-        $transaksi->tgl_bayar       = Carbon::now()->format('Y-m-d');
+        $transaksi->batas_waktu     = Carbon::now('Asia/Jakarta')->format('Y-m-d H:i:s');
+        $transaksi->tgl_bayar       = Carbon::now('Asia/Jakarta')->format('Y-m-d H:i:s');
         $transaksi->biaya_tambahan  = 0;
         $transaksi->diskon          = 0;
         $transaksi->pajak           = 0;
@@ -54,8 +61,6 @@ class TransaksiController extends Controller
         $transaksi->dibayar         = 'belum_dibayar';
         $transaksi->user_id        = Auth::user()->id;
         $transaksi->save();
-        // session(['id_penjualan' => $transaksi->id]);
-        // return view('transaksi.create', compact('members', 'pakets'));
         return redirect()->route('transaksi.proses', $transaksi->id);
     }
 
@@ -128,7 +133,8 @@ class TransaksiController extends Controller
         $pakets = Paket::all();
         $members = Member::all();
         $details = DetailTransaksi::all();
-       return view('transaksi.proses', compact('pakets', 'members','transaksis','details'));
+        $autoId = 'trx' . sprintf('%03d', Transaksi::count() + 1);
+       return view('transaksi.proses', compact('pakets', 'members','transaksis','details','autoId'));
     }
 
     /**
@@ -188,6 +194,7 @@ class TransaksiController extends Controller
     public function harga(Paket $pakets)
     {
         $pakets = Paket::find($pakets->id);
+        dd($pakets);
         return response()->json([
             'harga' => $pakets->harga
         ]);

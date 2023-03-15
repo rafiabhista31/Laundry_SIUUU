@@ -30,12 +30,15 @@ class DetailTransaksi extends Model
     
     public function paket()
     {
-        return $this->belongsTo('App\Models\Paket','paket_id');
+        return $this->belongsTo('App\Models\Paket');
     }
     
     public function transaksi()
     {
-        return $this->belongsTo('App\Models\Transaksi','transaksi_id');
+        return $this->hasOne('App\Models\Transaksi','id','transaksi_id');
+    }
+    public function qty(){
+        return $this->belongsTo('App\Models\Transaksi','transaksi');
     }
     
 }

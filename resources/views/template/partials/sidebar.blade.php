@@ -36,7 +36,7 @@
     @if (auth()->user()->role == 'admin')
     <li class="nav-item">
       <a class="nav-link" href="/outlet">
-        <i class="fa fa-table" aria-hidden="true"></i>
+        <i class="fas fa-store-alt"></i>
         <span>Outlet</span>
       </a>
     </li>
@@ -44,7 +44,7 @@
     @if (auth()->user()->role == 'admin')
     <li class="nav-item">
       <a class="nav-link" href="/paket">
-        <i class="fa fa-table" aria-hidden="true"></i>
+        <i class="fas fa-cube"></i>
         <span>Paket</span>
       </a>
     </li>
@@ -52,7 +52,7 @@
     @if (auth()->user()->role == 'admin')
     <li class="nav-item">
       <a class="nav-link" href="/member">
-        <i class="fa fa-table" aria-hidden="true"></i>
+        <i class="fas far fa-user-circle"></i>
         <span>Member</span>
       </a>
     </li>
@@ -60,20 +60,20 @@
     @if (auth()->user()->role == 'admin')
     <li class="nav-item">
       <a class="nav-link" href="/user">
-        <i class="fa fa-table" aria-hidden="true"></i>
+        <i class="fas fad fa-users"></i>
         <span>User</span>
       </a>
     </li>
     @endif
     <li class="nav-item">
       <a class="nav-link" href="/transaksi">
-        <i class="fa fa-table" aria-hidden="true"></i>
+        <i class="fas fad fa-money-bill-alt"></i>
         <span>Transaksi</span>
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="/logout">
-        <i class="fa-solid fa-door-closed fa-lg"></i>
+        <i class="fas fa-solid fa-door-closed fa-lg"></i>
         <span>Logout</span>
       </a>
     </li>

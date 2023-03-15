@@ -1,25 +1,36 @@
 @extends('master')
 
 @section('content')
-    
-@endsection
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-<body>
-  <div class="col-md-12">
-    <!-- Form Element sizes -->
-    <div class="card card-success">
+  <br>
+  <div class="container container-fluid">
+    <div class="card mt-4 mb-4">
+      <h5 class="card-header d-flex flex-row align-items-center justify-content-between">
+        <a>Tambah Transaksi</a>
+        <a href="?page=Transaksi" role="button" id="dropdownMenuLink" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-chevron-left fa-sm fa-fw"></i>
+        </a>
+      </h5>
       <div class="card-body">
+  
         <form action="{{ route('transaksi.detail.store', request()->segment(2)) }}" method="post">
           @csrf
-          <div class="row">
-            <div class="form-group col-md-8">
+          <div class="form-group row">
+            <label for="id" class="col-sm-2 col-form-label">Id Transaksi</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control-plaintext" id="id" name="id" value="{{$autoId}}" required
+                readonly>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="tanggal" class="col-sm-2 col-form-label">Tanggal Transaksi</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control-plaintext" id="tanggal" name="tanggal" value="<?= date('d M Y'); ?>"
+                required readonly>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="kd_paket" class="col-sm-2 col-form-label">Kode Paket</label>
+            <div class="col-sm-10">
               <select name="paket_id" id="paket_id" class="form-control">
                 <option selected disabled>--Pilih Data Paket--</option>
                 @forelse ($pakets as $paket)
@@ -32,46 +43,107 @@
                 <div class="text-danger small">{{ $message }}</div>
               @enderror
             </div>
-            <div class="form-group  col-md-2">
-              <input type="number" name="qty" id="qty" class="form-control" placeholder="Isi Qty">
-              @error('qty')
-                <div class="text-danger small">{{ $message }}</div>
-              @enderror
+          </div>
+          <div class="form-group row">
+            <label for="jenis" class="col-sm-2 col-form-label">Jenis Paket</label>
+            <div class="col-sm-10">
+          <select name="jenis" id="jenis" class="form-control">
+            <option selected disabled>--Pilih Jenis Paket --</option>
+            @foreach ($pakets as $paket)
+                <option value="{{ $paket->nama_paket }}" data-harga="{{ $paket->harga }}">{{ $paket->jenis }}</option>
+            @endforeach
+          </select>
             </div>
-            <div class="form-group  col-md-2">
-              <input type="submit" value="Tambah" class="btn btn-success form-control">
+          </div>
+          <div class="form-group row">
+            <label for="qty" class="col-sm-2 col-form-label">Quantity</label>
+            <div class="col-sm-10">
+              <input type="number" min="1" class="form-control" id="qty" name="qty" onkeyup="jumlahBiaya();" required>
             </div>
+          </div>
+          <div class="form-group row">
+            <label for="biaya" class="col-sm-2 col-form-label">Biaya</label>
+            <div class="col-sm-10">
+              <input type="number" class="form-control" id="biaya" name="biaya" onkeyup="jumlahKembalian();" required readonly>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="bayar" class="col-sm-2 col-form-label">Bayar</label>
+            <div class="col-sm-10">
+              <input type="number" min="0"  class="form-control" id="bayar" name="bayar" onkeyup="jumlahKembalian();"required>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="kembalian" class="col-sm-2 col-form-label">Kembalian</label>
+            <div class="col-sm-10">
+              <input type="number" class="form-control" id="kembalian" name="kembalian" required readonly>
+            </div>
+          </div>
+          <div class="card-footer text-center">
+            <button type="reset" class="btn btn-danger mr-2"><i class="fas fa-undo"></i> Reset</button>
+            <button type="submit" name="submit" class="btn btn-success"><i class="fas fa-save"></i> Save</button>
           </div>
         </form>
       </div>
-      <!-- /.card-body -->
-    </div>
-    <!-- /.card -->
+  
   </div>
+  <br>
+  <div class="col-lg-12">
+    <div class="card mb-4">
+      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        <h6 class="m-0 font-weight-bold text-primary">DataTables</h6>
+      </div>
+      <div class="table-responsive p-3">
+        <table class="table align-items-center table-flush" id="dataTable">
+          <thead class="thead-dark">
+            <tr>
+              <th>No</th>
+              <th>Nama Outlet</th>
+              <th>Nama Paket</th>
+              <th>Harga</th>
+              <th>Qty</th>
+              <th>Total Harga </th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              @php
+                $kode_invoice_terpilih = $transaksis->pluck('kode_invoice')->first();
+               @endphp
 
+              @foreach ($details as $detail)
+                <tr>
+                  <td>{{ $loop->iteration }}</td>
+                  <td>{{ $detail->paket->outlet->nama }}</td>
+                  <td>{{ $detail->paket->nama_paket }}</td>
+                  <td>Rp. {{ number_format($detail->paket->harga, 0, ',', '.') }}</td>
+                  <td><center>{{ $detail->qty }}</center></td>
+                  <td>Rp. {{ number_format($detail->paket->harga * $detail->qty, 0, ',', '.') }}</td>
+                </tr>
+              @endforeach
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="{{ asset('js/app.js') }}"></script>
-</body>
-</html>
+@endsection
 @section('scripts')
 <script>
-// resources/js/app.js
+  $('select[name="nama_paket"]').change(function() {
+      var harga = $(this).find(':selected').data('harga');
+      var qty = $('input[name="qty"]').val();
+      $('input[name="total_harga"]').val(harga * qty);
+  });
 
-$(document).ready(function() {
-    // Fungsi untuk mengambil harga dari database
-    function getHarga(jenisPakaianId) {
-        // ...
-    }
+  $('input[name="qty"]').change(function() {
+      var harga = $('select[name="nama_paket"]').find(':selected').data('harga');
+      var qty = $(this).val();
+      $('input[name="total_harga"]').val(harga * qty);
+  });
+</script>
 
-    // Fungsi untuk menghitung total harga
-    function hitungTotalHarga() {
-        var harga = parseFloat($('#harga').val()) || 0;
-        var berat = parseFloat($('#berat').val()) || 0;
-        var totalHarga = harga * berat;
-
-        $('#total_harga').val(totalHarga.toFixed(2));
-    }
-
-    // Menangani perubahan pada p
- </script>
 @endsection

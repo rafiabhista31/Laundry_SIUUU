@@ -45,24 +45,64 @@ class DetailTransaksiController extends Controller
      */
     public function store(Request $request, $transaksi)
     {
-        //
         $request->validate([
-            'paket_id'  => 'required',
-            'qty'       => 'required'
-        ],
+            'paket_id' => 'required',
+            'qty' => 'required',
+        ], 
         [
             'paket_id.required' => 'Pilih Paket',
-            'qty.required'      => 'Isi Qty'
+            'qty.required' => 'Isi Qty'
         ]);
+    
+        $transaksiModel = Transaksi::findOrFail($transaksi);
+
+        // mencari paket dengan id yang sesuai
+        $paket = Paket::find($request->paket_id);
+        if (!$paket) {
+            return redirect()->back()->withErrors(['Paket tidak ditemukan']);
+        }
+
+        // Mengambil data outlet terkait dari paket
+        $outlet = $paket->outlet;
 
         $detailTransaksi = new DetailTransaksi;
-        $detailTransaksi->transaksi_id  = $transaksi;
-        $detailTransaksi->paket_id      = $request->paket_id;
-        $detailTransaksi->qty           = $request->qty;
+        $detailTransaksi->transaksi_id = $transaksiModel->id;
+        $detailTransaksi->paket_id = $paket->id;
+        $detailTransaksi->qty = $request->qty;
         $detailTransaksi->save();
 
-        return redirect()->route('transaksi.proses', $transaksi);
+
+        $latestInvoice = Transaksi::orderBy('created_at', 'desc')->pluck('kode_invoice')->first();
+        $latestInvoiceNumber = substr($latestInvoice, 3);
+        $newInvoiceNumber = $latestInvoiceNumber + 1;
+        $newInvoiceId = 'trx' . str_pad($newInvoiceNumber, 3, '0', STR_PAD_LEFT);
+
+        // Mengambil nama outlet dari data outlet terkait
+        $autoId = $newInvoiceId;
+        $detailTransaksi->save();
+
+        return redirect()->route('transaksi.proses', compact('transaksi','autoId','outlet', 'transaksiModel'));
     }
+
+    
+    //     public function invoice($id)
+    // {  
+    //     $transaksi = Transaksi::where('kode_invoice', $id)->first();
+    //     $details = DetailTransaksi::where('kode_invoice', $id)->get();
+    //     $total_harga = $details->sum(function($detail) {
+    //         return $detail->paket->harga * $detail->qty;
+    //     });
+    //     return view('transaksi.invoice', [
+    //         'kode_invoice' => $id,
+    //         'tanggal' => $transaksi->tanggal,
+    //         'nama_pelanggan' => $transaksi->member ? $transaksi->member->nama_member : '-',
+    //         'details' => $details,
+    //         'total_harga' => $total_harga,
+    //     ]);
+    // }
+
+    
+
     /**
      * Display the specified resource.
      *
