@@ -17,10 +17,10 @@ class DetailTransaksiController extends Controller
     public function index()
     {
         //
-        // $detailTransaksi = DetailTransaksi::all();
-        // $transaksi       = Transaksi::all();
-        // $paket           = Paket::all();
-        // return view('detailtransaksi.index', compact('detailTransaksi','transaksi','paket'));
+        $details = DetailTransaksi::all();
+        $transaksis       = Transaksi::all();
+        $paket           = Paket::all();
+        return view('transaksi.index', compact('details','transaksis','paket'));
     }
 
     /**
@@ -69,6 +69,7 @@ class DetailTransaksiController extends Controller
         $detailTransaksi->transaksi_id = $transaksiModel->id;
         $detailTransaksi->paket_id = $paket->id;
         $detailTransaksi->qty = $request->qty;
+    
         $detailTransaksi->save();
 
 
@@ -83,23 +84,32 @@ class DetailTransaksiController extends Controller
 
         return redirect()->route('transaksi.proses', compact('transaksi','autoId','outlet', 'transaksiModel'));
     }
+    
+    public function updateStatus(Request $request, $id)
+    {
+        $transaksi = Transaksi::findOrFail($id);
+        $transaksi->status = 'selesai';
+        $transaksi->dibayar = 'dibayar';
+        $transaksi->save();
+
+        return redirect()->route('transaksi.proses',$transaksi);
+    }
+
+
+    public function invoice($id)
+    {
+        $transaksi = Transaksi::where('id', $id)->where('status', 'Selesai')->first();
+
+        if (!$transaksi) {
+            return view('transaksi.no_invoice');
+        }
+
+        $details = DetailTransaksi::where('transaksi_id', $transaksi->id)->get();
+
+        return view('transaksi.invoice', compact('transaksi', 'details'));
+    }
 
     
-    //     public function invoice($id)
-    // {  
-    //     $transaksi = Transaksi::where('kode_invoice', $id)->first();
-    //     $details = DetailTransaksi::where('kode_invoice', $id)->get();
-    //     $total_harga = $details->sum(function($detail) {
-    //         return $detail->paket->harga * $detail->qty;
-    //     });
-    //     return view('transaksi.invoice', [
-    //         'kode_invoice' => $id,
-    //         'tanggal' => $transaksi->tanggal,
-    //         'nama_pelanggan' => $transaksi->member ? $transaksi->member->nama_member : '-',
-    //         'details' => $details,
-    //         'total_harga' => $total_harga,
-    //     ]);
-    // }
 
     
 

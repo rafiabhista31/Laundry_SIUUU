@@ -1,6 +1,12 @@
 @extends('master')
 
 @section('content')
+<style>
+button {
+  background-color: green;
+  color: white;
+}
+</style>
   <br>
   <div class="container container-fluid">
     <div class="card mt-4 mb-4">
@@ -62,21 +68,20 @@
             </div>
           </div>
           <div class="form-group row">
-            <label for="biaya" class="col-sm-2 col-form-label">Biaya</label>
+            <label for="bayar" class="col-sm-2 col-form-label">Harga</label>
             <div class="col-sm-10">
-              <input type="number" class="form-control" id="biaya" name="biaya" onkeyup="jumlahKembalian();" required readonly>
+              <select name="nama_paket" id="nama_paket" class="form-control" onchange="updateHarga()" required>
+                <option value="">-- Pilih Paket --</option>
+                @foreach ($pakets as $paket)
+                <option value="{{ $paket->nama_paket }}" data-harga="{{ $paket->harga }}">{{ $paket->harga }}</option>
+                @endforeach
+              </select>
             </div>
           </div>
           <div class="form-group row">
             <label for="bayar" class="col-sm-2 col-form-label">Bayar</label>
             <div class="col-sm-10">
-              <input type="number" min="0"  class="form-control" id="bayar" name="bayar" onkeyup="jumlahKembalian();"required>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="kembalian" class="col-sm-2 col-form-label">Kembalian</label>
-            <div class="col-sm-10">
-              <input type="number" class="form-control" id="kembalian" name="kembalian" required readonly>
+              <input type="number" class="form-control" id="bayar" name="bayar" onclick="hitungKembalian()" required>
             </div>
           </div>
           <div class="card-footer text-center">
@@ -91,7 +96,7 @@
   <div class="col-lg-12">
     <div class="card mb-4">
       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-        <h6 class="m-0 font-weight-bold text-primary">DataTables</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Tabel Transaksi</h6>
       </div>
       <div class="table-responsive p-3">
         <table class="table align-items-center table-flush" id="dataTable">
@@ -103,6 +108,8 @@
               <th>Harga</th>
               <th>Qty</th>
               <th>Total Harga </th>
+              <th>Status</th>
+              <th>Status Pembayaran</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -120,6 +127,17 @@
                   <td>Rp. {{ number_format($detail->paket->harga, 0, ',', '.') }}</td>
                   <td><center>{{ $detail->qty }}</center></td>
                   <td>Rp. {{ number_format($detail->paket->harga * $detail->qty, 0, ',', '.') }}</td>
+                  <td>{{ $detail->transaksi->dibayar }}</td>
+                  <td>{{ $detail->transaksi->status }}</td>
+                  <td>
+                    <form action="{{ route('transaksi.updateStatus',$detail->transaksi->id ) }} " method="POST">
+                      @csrf
+                      @method('PATCH')
+                      <button type="submit" class="btn btn-info">Update Status</button>
+                    </form>
+                    <br>                  
+                          <a href="{{ route('transaksi.invoice', ['transaksi' => $detail->transaksi->id]) }}" class="btn btn-info">Invoice</a>
+                </td>
                 </tr>
               @endforeach
 
@@ -144,6 +162,12 @@
       var qty = $(this).val();
       $('input[name="total_harga"]').val(harga * qty);
   });
+  function updateHarga() {
+  var select = document.getElementById("nama_paket");
+  var harga = document.getElementById("harga");
+  var selectedOption = select.options[select.selectedIndex];
+  harga.value = selectedOption.dataset.harga;
+}
 </script>
 
 @endsection

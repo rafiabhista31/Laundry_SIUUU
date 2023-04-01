@@ -15,7 +15,7 @@ class Transaksi extends Model
         'tgl_bayar','biaya_tambahan','diskon','pajak','status','dibayar','user_id',
     ];
     protected $dispatchesEvents = [
-        'creating' => \App\Listeners\TransaksiId::class,
+    'creating' => \App\Listeners\TransaksiId::class,
     ];
     protected static function boot()
     {

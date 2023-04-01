@@ -30,7 +30,7 @@
             <option value="{{ $item->id }}">{{ $item->nama }}</option>
           @endforeach
         </select>
-        <br><br>
+        <br>
         <input type="submit" value="Transaksi baru" class="btn btn-success btn-lg">
       </form>
       </div>

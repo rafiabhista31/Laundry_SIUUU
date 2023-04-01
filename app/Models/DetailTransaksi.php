@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Transaksi;
 
 class DetailTransaksi extends Model
 {
@@ -32,11 +33,12 @@ class DetailTransaksi extends Model
     {
         return $this->belongsTo('App\Models\Paket');
     }
-    
+
     public function transaksi()
     {
-        return $this->hasOne('App\Models\Transaksi','id','transaksi_id');
+        return $this->belongsTo(Transaksi::class);
     }
+
     public function qty(){
         return $this->belongsTo('App\Models\Transaksi','transaksi');
     }
