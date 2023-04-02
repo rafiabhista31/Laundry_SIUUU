@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 
 
-<title>Receipt page - Bootdey.com</title>
+<title>Invoice Page</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
 <style type="text/css">
@@ -81,7 +81,7 @@
                                             <tr>
                                                 <td>Diskon</td>
                                                 <td class="text-center">{{ number_format($details->first()->transaksi->diskon * 100, 2, ',', '.') }}%</td>
-                                                <td class="text-center">Rp. {{ number_format(0 )}}</td>
+                                                <td class="text-center">{{ number_format($details->first()->transaksi->diskon * 100, 2, ',', '.') }}%</td>
                                             </tr>
                                         </tbody>
                                         <tfoot>
@@ -90,19 +90,25 @@
                                                 <th class="text-center">Rp. {{ number_format($details->first()->paket->harga * $details->first()->qty + $details->first()->transaksi->pajak + $details->first()->transaksi->diskon , 0, ',', '.') }}</th>
                                             </tr>
                                             <tr>
-                                                <th colspan="2" class="text-right">Credit:</th>
-                                                <th class="text-center">$00.00 USD</th>
-                                            </tr>
-                                            <tr>
                                                 <th colspan="2" class="text-right">Total:</th>
                                                 <th class="text-center">Rp. {{ number_format($details->first()->paket->harga * $details->first()->qty + $details->first()->transaksi->pajak + $details->first()->transaksi->diskon , 0, ',', '.') }}</th>
+                                            </tr>
+                                            <tr>
+                                                <th colspan="2" class="text-right">Bayar:</th>
+                                                <th class="text-center">Rp. {{ number_format($details->first()->bayar  , 0, ',', '.') }}</th>
+                                            </tr>
+                                            <tr>
+                                                <th colspan="2" class="text-right">Kembalian:</th>
+                                                <th class="text-center">Rp. {{ number_format($details->first()->bayar - $details->first()->paket->harga * $details->first()->qty + $details->first()->transaksi->pajak + $details->first()->transaksi->diskon , 0, ',', '.') }}</th>
                                             </tr>
                                         </tfoot>
                                     </table>
                                 </div>
                             </div>
                             <div class="invoice-footer mt25">
-                                <p class="text-center">{{ now('Asia/Jakarta')->format('Y-m-d H:i:s') }} <a href="#" class="btn btn-default ml15"><i class="fa fa-print mr5"></i> Print</a></p>
+                                <p class="text-center">{{ now('Asia/Jakarta')->format('Y-m-d H:i:s') }} <a href="#" class="btn btn-default ml15"><i class="fa fa-print mr5"></i> Print</a>
+                                   <a href="{{ url()->previous() }}" class="btn btn-warning">Kembali</a>
+                                </p>
                             </div>
                         </div>
 

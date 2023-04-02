@@ -24,7 +24,7 @@
       </strong>
       <form action="{{ route('transaksi.baru') }}" method="POST">
         @csrf
-        <select class="form-control select2" style="width: 100%;" name="member_id">
+        <select class="select2-single form-control" name="member_id" >
           <option selected="selected" disabled>-- Pilih Member --</option>
           @foreach ($members as $item)
             <option value="{{ $item->id }}">{{ $item->nama }}</option>

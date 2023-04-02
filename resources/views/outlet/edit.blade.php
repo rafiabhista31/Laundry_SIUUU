@@ -27,7 +27,7 @@
                               </div>
                       </div>
                       <button type="submit" class="btn btn-primary ml-3">Update</button>
-  <a href="/pengaduan" class="btn btn-secondary ml-3" style="float:left;">Back</a> 
+  <a href="/outlet" class="btn btn-secondary ml-3" style="float:left;">Back</a> 
                     </form>
                   </div>
                 </div>

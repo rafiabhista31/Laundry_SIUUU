@@ -37,15 +37,16 @@
                   <td>{{ $detail->transaksi->dibayar }}</td>
                   <td>{{ $detail->transaksi->status }}</td>
                   <td>
-                    @if (auth()->user()->role == 'kasir,admin')
-                    <form action="{{ route('transaksi.updateStatus',$detail->transaksi->id ) }} " method="POST">
-                      @csrf
-                      @method('PATCH')
-                      <button type="submit" class="btn btn-info">Update Status</button>
-                    </form>
+                    @if (auth()->user()->role == 'kasir' || auth()->user()->role == 'admin')
+                      <form action="{{ route('transaksi.updateStatus',$detail->transaksi->id ) }} " method="POST">
+                        @csrf
+                        @method('PATCH')
+                        <button type="submit" class="btn btn-info">Update Status</button>
+                      </form>
                     @endif
                     <br>                  
                           <a href="{{ route('transaksi.invoice', ['transaksi' => $detail->transaksi->id]) }}" class="btn btn-info">Invoice</a>
+                </td>
                 </td>
                 </tr>
               @endforeach

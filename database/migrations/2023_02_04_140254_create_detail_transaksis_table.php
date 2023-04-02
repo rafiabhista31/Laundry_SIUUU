@@ -20,6 +20,7 @@ class CreateDetailTransaksisTable extends Migration
             $table->foreignId('paket_id')->constrained('pakets')
             ->onDelete('cascade');
             $table->double('qty');
+            $table->integer('bayar');
             $table->timestamps();
         });
     }

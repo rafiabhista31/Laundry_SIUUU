@@ -11,7 +11,7 @@ class DetailTransaksi extends Model
     use HasFactory;
     protected $table = "detail_transaksis";
     protected $fillable = [
-        'id','transaksi_id','paket_id','qty'
+        'id','transaksi_id','paket_id','qty','bayar'
     ];
 
     public function outlet()

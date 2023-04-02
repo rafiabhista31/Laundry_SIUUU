@@ -69,6 +69,7 @@ class DetailTransaksiController extends Controller
         $detailTransaksi->transaksi_id = $transaksiModel->id;
         $detailTransaksi->paket_id = $paket->id;
         $detailTransaksi->qty = $request->qty;
+        $detailTransaksi->bayar = $request->bayar;
     
         $detailTransaksi->save();
 
@@ -108,10 +109,6 @@ class DetailTransaksiController extends Controller
 
         return view('transaksi.invoice', compact('transaksi', 'details'));
     }
-
-    
-
-    
 
     /**
      * Display the specified resource.

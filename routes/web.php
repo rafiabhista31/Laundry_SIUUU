@@ -68,10 +68,10 @@ Route::middleware(['auth', 'role:kasir,admin,owner'])->group(function(){
     Route::post('transaksi/simpan', [TransaksiController::class, 'store'])->name('transaksi.store');
     Route::post('transaksi/{transaksi}/detail', [DetailTransaksiController::class, 'store'])
     ->name('transaksi.detail.store');
-    Route::patch('transaksi/{transaksi}/update-status',[DetailTransaksiController::class,'updateStatus'])
+     Route::patch('transaksi/{transaksi}/update-status',[DetailTransaksiController::class,'updateStatus'])
     ->name('transaksi.updateStatus');
+});
+ Route::middleware(['auth', 'role:kasir,admin,owner'])->group(function(){
     Route::get('transaksi/{transaksi}/invoice', [DetailTransaksiController::class, 'invoice'])
     ->name('transaksi.invoice');
-    Route::put('/update-status/{transaksi}', [DetailTransaksiController::class,'updateStatus'])->name('updateStatus');
-    Route::put('transaksi/updateStatus/{transaksi}', [TransaksiController::class,'updateStatus'])->name('updateStatus');
-});
+    });
