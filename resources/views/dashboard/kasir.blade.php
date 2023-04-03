@@ -34,6 +34,8 @@
         <input type="submit" value="Transaksi baru" class="btn btn-success btn-lg">
       </form>
       </div>
+ 
+
       <!-- /.card-body -->
       <div class="card-footer"><strong>
       Footer

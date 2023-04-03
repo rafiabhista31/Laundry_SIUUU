@@ -4,6 +4,10 @@
 <div class="col-md-12">
     <div class="card">
       <div class="card-header">
+        @if (auth()->user()->role == 'kasir' || auth()->user()->role == 'admin')
+          <a href="{{ route('dashboard.kasir') }}" class="btn btn-primary">Tambah</a>
+          @endif
+
   
   <div class="table-responsive p-3">
     <table class="table align-items-center table-flush" id="dataTable">
@@ -45,7 +49,7 @@
                       </form>
                     @endif
                     <br>                  
-                          <a href="{{ route('transaksi.invoice', ['transaksi' => $detail->transaksi->id]) }}" class="btn btn-info">Invoice</a>
+                          <a href="{{ route('transaksi.invoice', ['transaksi' => $detail->transaksi->id]) }}" onclick="window.open" class="btn btn-info">Invoice</a>
                 </td>
                 </td>
                 </tr>

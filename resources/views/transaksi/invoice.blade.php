@@ -8,16 +8,37 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
 <style type="text/css">
+        table {
+			border-collapse: collapse;
+			width: 100%;
+		}
+
+		th, td {
+			text-align: left;
+			padding: 8px;
+			border: 1px solid black;
+		}
+
+		th {
+			background-color: #ddd;
+		}
     	body{
     margin-top:10px;
     background:#eee;    
-}
+    }
+    </style>
+    <style>
+        @media print {
+        * {
+            border: 1px solid black !important;
+        }
+    }
     </style>
 </head>
 <body>
     <div class="container bootdey">
     <div class="row invoice row-printable">
-        <div class="col-md-10">
+        <div class="col-md-6">
             <!-- start col-lg-12 -->
             <div class="panel panel-default plain" id="dash_0">
                 <!-- start panel -->
@@ -25,10 +46,22 @@
                     <div class="row">
                         <!-- start row -->
                         <div class="col-lg-6">
+                            
+
                             <!-- start col-lg-6 -->
                         </div>
                         <!-- end col-lg-6 -->
                         <div class="col-lg-6">
+                            <div class="invoice-from">
+                                <ul class="list-unstyled text-right">
+                                    <li><strong style="font-size: 15px;">Laundry Siuuu</strong></li>
+                                    @foreach($outlets as $outlet)
+                                    <li><strong style="font-size: 15px;">{{ $outlet->nama }}</strong></li>
+                                    <li><strong style="font-size: 15px;">{{ $outlet->alamat }}</strong></li>
+                                    <li><strong style="font-size: 15px;">{{ $outlet->tlp }}</strong></li>
+                                    @endforeach
+                                </ul>
+                            </div>
                             <!-- start col-lg-6 -->
                         </div>
                         <!-- end col-lg-6 -->
@@ -38,7 +71,7 @@
                                 <div class="well">
                                     @if($details->count() > 0)
                                     <ul class="list-unstyled mb0">
-                                        <li><strong>Invoice</strong> {{$details->first()->transaksi->kode_invoice }}</li>
+                                        <li><strong>Invoice:</strong> {{$details->first()->transaksi->kode_invoice }}</li>
                                         <li><strong>Tanggal Invoice:</strong>{{ now('Asia/Jakarta')->format('Y-m-d H:i:s') }}</li>
                                         <li><strong>Tanggal Transaksi:</strong>{{ $details->first()->transaksi->tgl }}</li>
                                         <li><strong>Status:</strong> <span class="label label-success">{{ $details->first()->transaksi->status}}</span></li>
@@ -106,8 +139,7 @@
                                 </div>
                             </div>
                             <div class="invoice-footer mt25">
-                                <p class="text-center">{{ now('Asia/Jakarta')->format('Y-m-d H:i:s') }} <a href="#" class="btn btn-default ml15"><i class="fa fa-print mr5"></i> Print</a>
-                                   <a href="{{ url()->previous() }}" class="btn btn-warning">Kembali</a>
+                                <p class="text-center">{{ now('Asia/Jakarta')->format('Y-m-d H:i:s') }}
                                 </p>
                             </div>
                         </div>

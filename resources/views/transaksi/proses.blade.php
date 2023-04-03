@@ -30,8 +30,8 @@ button {
           <div class="form-group row">
             <label for="tanggal" class="col-sm-2 col-form-label">Tanggal Transaksi</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control-plaintext" id="tanggal" name="tanggal" value="<?= date('d M Y'); ?>"
-                required readonly>
+              <input type="date" class="form-control-plaintext" id="tanggal" name="tanggal" value="<?= date('d M Y'); ?>"
+                required >
             </div>
           </div>
           <div class="form-group row">
@@ -136,7 +136,7 @@ button {
                       <button type="submit" class="btn btn-info">Update Status</button>
                     </form>
                     <br>                  
-                          <a href="{{ route('transaksi.invoice', ['transaksi' => $detail->transaksi->id]) }}" class="btn btn-info">Invoice</a>
+                          <a href="{{ route('transaksi.invoice', ['transaksi' => $detail->transaksi->id]) }}" onclick="window.open" class="btn btn-info">Invoice</a>
                 </td>
                 </tr>
               @endforeach

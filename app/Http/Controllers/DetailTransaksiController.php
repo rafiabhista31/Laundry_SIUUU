@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\DetailTransaksi;
+use App\Models\Outlet;
 use App\Models\Transaksi;
 use App\Models\Paket;
 use Illuminate\Http\Request;
+use Dompdf\Dompdf;
 
 class DetailTransaksiController extends Controller
 {
@@ -53,7 +55,7 @@ class DetailTransaksiController extends Controller
             'paket_id.required' => 'Pilih Paket',
             'qty.required' => 'Isi Qty'
         ]);
-    
+        
         $transaksiModel = Transaksi::findOrFail($transaksi);
 
         // mencari paket dengan id yang sesuai
@@ -62,7 +64,7 @@ class DetailTransaksiController extends Controller
             return redirect()->back()->withErrors(['Paket tidak ditemukan']);
         }
 
-        // Mengambil data outlet terkait dari paket
+        // Mengambil data outlet terkait dari paket/
         $outlet = $paket->outlet;
 
         $detailTransaksi = new DetailTransaksi;
@@ -70,10 +72,7 @@ class DetailTransaksiController extends Controller
         $detailTransaksi->paket_id = $paket->id;
         $detailTransaksi->qty = $request->qty;
         $detailTransaksi->bayar = $request->bayar;
-    
-        $detailTransaksi->save();
-
-
+        
         $latestInvoice = Transaksi::orderBy('created_at', 'desc')->pluck('kode_invoice')->first();
         $latestInvoiceNumber = substr($latestInvoice, 3);
         $newInvoiceNumber = $latestInvoiceNumber + 1;
@@ -102,13 +101,30 @@ class DetailTransaksiController extends Controller
         $transaksi = Transaksi::where('id', $id)->where('status', 'Selesai')->first();
 
         if (!$transaksi) {
-            return view('transaksi.no_invoice');
+            return view('transaksi.invoice');
         }
 
         $details = DetailTransaksi::where('transaksi_id', $transaksi->id)->get();
+        $outlets = Outlet::all();
 
-        return view('transaksi.invoice', compact('transaksi', 'details'));
+        $html = view('transaksi.invoice', compact('transaksi', 'details', 'outlets'))->render();
+
+        // instantiate and use the dompdf class
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml($html);
+
+        // (Optional) Setup the paper size and orientation
+        $dompdf->setPaper('A4', 'landscape');
+
+        // Render the HTML as PDF
+        $dompdf->render();
+
+        // Output the generated PDF to Browser
+        $dompdf->stream();
+
+        return view('transaksi.invoice', compact('transaksi', 'details', 'outlets'));
     }
+
 
     /**
      * Display the specified resource.

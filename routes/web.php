@@ -70,8 +70,9 @@ Route::middleware(['auth', 'role:kasir,admin,owner'])->group(function(){
     ->name('transaksi.detail.store');
      Route::patch('transaksi/{transaksi}/update-status',[DetailTransaksiController::class,'updateStatus'])
     ->name('transaksi.updateStatus');
-});
- Route::middleware(['auth', 'role:kasir,admin,owner'])->group(function(){
     Route::get('transaksi/{transaksi}/invoice', [DetailTransaksiController::class, 'invoice'])
     ->name('transaksi.invoice');
-    });
+    Route::get('transaksi/{transaksi}/print', [DetailTransaksiController::class, 'print'])
+    ->name('transaksi.print');
+});
+ 

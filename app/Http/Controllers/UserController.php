@@ -93,8 +93,9 @@ class UserController extends Controller
     public function edit(user $user)
     {
         //
-        $users = user::find($user->id);
-        return view('user.edit', compact('users'));
+        $users = User::find($user->id);
+        $outlet = Outlet::all();
+        return view('user.edit', compact('users','outlet'));
     }
 
     /**
@@ -106,7 +107,6 @@ class UserController extends Controller
      */
     public function update(Request $request, user $user)
     {
-        //
         $request->validate([
             'nama' => 'required',
             'username' => 'required',
@@ -114,14 +114,16 @@ class UserController extends Controller
             'role' => 'required',
             'outlet_id' => 'required',
         ]);
-        $users = User::find($user->id);
-        $users->nama = $request->nama;
-        $users->username = $request->username;
-        $users->password = $request->password;
-        $users->role = $request->role;
-        $users->update();
-        return redirect('/user');
+            $user->update([
+                'nama' => $request->nama,
+                'username' => $request->username,
+                'password' => bcrypt('password'),
+                'role' => $request->role,
+                'outlet_id' => $request->outlet_id,
+            ]);
+            return redirect()->route('user.index');
     }
+
 
     /**
      * Remove the specified resource from storage.

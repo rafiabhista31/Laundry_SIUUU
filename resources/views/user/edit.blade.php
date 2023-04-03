@@ -16,8 +16,16 @@
         <div class="row">
           <div class="col-md-8 col-12">
             <div class="form-group">
+              <label for="username">Nama User</label>
+              <input type="text" name="nama" class="form-control" id="username" value="{{$users->nama}}">
+            </div>
+            <div class="form-group">
               <label for="username">Username</label>
               <input type="text" name="username" class="form-control" id="username" value="{{$users->username}}">
+            </div>
+            <div class="form-group">
+              <label for="username">Password</label>
+              <input type="text" name="password" class="form-control" id="username" value="{{$users->password}}">
             </div>
           </div>  
           <div class="col-md-4 col-12">
@@ -30,13 +38,19 @@
                     <option value="kasir">Kasir</option>
                   </select>
             </div>
+            <div class="form-group">
+                <label for="level">Outlet Id</label>
+                  <select class="form-control" aria-label="Default select example" name="outlet_id">
+              @foreach ($outlet as $item)
+                <option value="{{ $item->id }}" {{ $item->id == $users->outlet_id ? 'selected' : '' }}>
+                  {{ $item->nama .' | '. $item->alamat }}
+                </option>
+              @endforeach
+            </select>
+            </div>
           </div>
           </div>
           <div class="row">
-            <div class="form-group">
-              <label for="password">Password</label>
-              <input type="text" name="password" class="form-control" id="password" value="{{$users->password}}">
-            </div>
           </div>
         </div>
       <!-- /.card-body -->

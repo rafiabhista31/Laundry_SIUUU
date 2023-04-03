@@ -71,7 +71,15 @@
                 <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                     <div class="navbar-nav ml-auto py-0">
                         @auth
-                        <a href="{{ url('/home') }}" class="nav-item nav-link active">Home</a>
+                        @if (auth()->user()->role == 'admin')
+                        <a href="{{ url('/dashboard/admin') }}" class="nav-item nav-link active">Home</a>
+                        @endif
+                        @if (auth()->user()->role == 'kasir')
+                        <a href="{{ url('/dashboard/kasir') }}" class="nav-item nav-link active">Home</a>
+                        @endif
+                        @if (auth()->user()->role == 'owner')
+                        <a href="{{ url('/dashboard/owner') }}" class="nav-item nav-link active">Home</a>
+                        @endif
                         @else
                         <a href="{{ route('login') }}" class="nav-item nav-link">Login</a>
                         @if (Route::has('register'))

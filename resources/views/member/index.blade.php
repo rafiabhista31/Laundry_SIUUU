@@ -1,8 +1,9 @@
 @extends('master')
 
 @section('content')
-
-  <h1 class="he">Paket Index</h1>
+<div class="card">
+  <div class="card-header">
+  <h1 class="card-title">Member Index</h1>
   <a class="btn btn-info mr-3" href="/member/create">create</a>
 <div class="table-responsive">
   <table class="table">
@@ -36,5 +37,7 @@
     </tbody>
     @endforeach
 </table>
+</div>
+  </div>
 </div>
 @endsection

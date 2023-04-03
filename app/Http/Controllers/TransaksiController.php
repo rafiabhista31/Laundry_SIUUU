@@ -129,6 +129,7 @@ class TransaksiController extends Controller
     public function edit(Transaksi $transaksi, Paket $paket)
     {
         //
+        dd($transaksi);
         $transaksis = Transaksi::all();
         $pakets = Paket::all();
         $members = Member::all();
